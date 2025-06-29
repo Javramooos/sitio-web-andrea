@@ -1,0 +1,40 @@
+/* src/pages/LegalPages.css */
+
+.legal-container {
+  max-width: 800px;
+  margin: 4rem auto; /* Centra el contenedor y le da espacio arriba/abajo */
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  line-height: 1.7; /* Mejora la legibilidad */
+  color: #333;
+}
+
+.legal-container h1 {
+  font-size: 2.5rem;
+  color: var(--principal); /* Usa tu color principal */
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--principal);
+  padding-bottom: 0.5rem;
+}
+
+.legal-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.legal-container p, .legal-container ul {
+  font-size: 1rem;
+  color: var(--texto-secundario);
+}
+
+.legal-container strong {
+  color: #333;
+}
+
+.legal-container ul {
+  padding-left: 20px;
+}

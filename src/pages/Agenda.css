@@ -1,0 +1,233 @@
+/* Archivo: pages/Agenda.css */
+
+.agenda-page-container {
+  max-width: 1200px;
+  margin: 2rem auto 6rem;
+  padding: 0 1rem;
+}
+
+.agenda-titulo-container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.agenda-titulo-container h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.agenda-titulo-container p {
+  font-size: 1.2rem;
+  color: var(--texto-secundario);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Contenedor principal de 2 columnas */
+.agenda-content-wrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* La columna del form es un poco más ancha */
+  gap: 3rem; /* Espacio entre las columnas */
+}
+
+/* --- Estilos para el formulario --- */
+.formulario-agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--texto);
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Importante para que el padding no afecte el ancho */
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--principal);
+  box-shadow: 0 0 0 2px rgba(209, 179, 189, 0.4);
+}
+
+.horas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.hora-btn {
+  padding: 0.75rem;
+  border: 1px solid var(--principal);
+  background-color: #fff;
+  color: var(--principal);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.hora-btn:hover {
+  background-color: #fdf6f8;
+}
+
+.hora-btn.selected {
+  background-color: var(--principal);
+  color: #fff;
+}
+
+.submit-btn {
+  padding: 1rem;
+  background-color: var(--principal);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--principal-hover);
+}
+
+
+/* --- Estilos para la columna de información --- */
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-box {
+  background-color: #fdf6f8;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid var(--principal);
+}
+
+.info-box h3 {
+  margin-top: 0;
+  color: var(--principal);
+}
+
+.info-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.info-box ul li {
+  margin-bottom: 0.5rem;
+}
+
+.map-container {
+  border-radius: 8px;
+  overflow: hidden; /* Para que el mapa respete los bordes redondeados */
+  margin-top: 1rem;
+}
+
+/* --- Responsividad para móviles --- */
+@media (max-width: 900px) {
+  .agenda-content-wrapper {
+    grid-template-columns: 1fr; /* Las columnas se apilan una sobre otra */
+  }
+}
+/* Archivo: pages/Agenda.css */
+
+/* --- ESTILOS PARA LOS MENSAJES DE ERROR --- */
+
+.error-msg {
+  color: #D8000C; /* Un color rojo para la alerta */
+  background-color: #FFD2D2; /* Un fondo rosado muy pálido */
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* src/pages/Agenda.css - Añadir al final del archivo */
+
+/* --- Estilos para el nuevo consejo dinámico --- */
+
+@keyframes highlight-and-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    background-color: rgba(209, 179, 189, 0.5); /* Color principal semi-transparente */
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: rgba(209, 179, 189, 0.5);
+  }
+  100% {
+    opacity: 1;
+    background-color: transparent; /* El fondo se desvanece a transparente */
+  }
+}
+
+.consejo-especifico {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px dashed var(--principal); /* Borde punteado para diferenciarlo */
+  animation: highlight-and-fade-in 1.5s ease-out forwards;
+}
+
+.consejo-especifico strong {
+  color: var(--principal);
+}
+/* === ESTILOS RESPONSIVOS PARA AGENDA === */
+@media (max-width: 480px) {
+  .agenda-titulo-container h1 {
+    font-size: 2.2rem;
+  }
+  .agenda-titulo-container p {
+    font-size: 1rem;
+  }
+  
+  /* Hacemos que la cuadrícula de horas sea más flexible */
+  .horas-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+}
+/* ========================================================= */
+/* === LÓGICA RESPONSIVA PARA MOVER EL BOTÓN DE SUBMIT === */
+/* ========================================================= */
+
+/* Por defecto (en escritorio), el botón de móvil está oculto */
+.submit-btn-mobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  /* En móvil, ocultamos el botón original que está dentro del formulario */
+  .submit-btn-desktop {
+    display: none;
+  }
+
+  /* Y mostramos el botón duplicado que está en la columna de información */
+  .submit-btn-mobile {
+    display: block; /* Lo hacemos visible */
+    width: 100%;    /* Hacemos que ocupe todo el ancho de su columna */
+    margin-top: 1rem; /* Le damos un poco de espacio superior */
+  }
+}

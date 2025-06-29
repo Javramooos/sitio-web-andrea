@@ -1,0 +1,123 @@
+/* ============================================== */
+/* === ARCHIVO NAVBAR.CSS (CON ALINEACIÓN CORREGIDA) === */
+/* ============================================== */
+
+/* Contenedor principal de la barra de navegación */
+.navbar {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 0.5rem 2rem; 
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--principal);
+
+  /* --- CAMBIO CLAVE 1: Convertimos el navbar en un contenedor flex --- */
+  display: flex;
+  justify-content: space-between; /* Empuja los hijos a los extremos */
+  align-items: center;
+  flex-wrap: wrap; /* Permite que los elementos se apilen en móvil */
+}
+
+/* Contenedor del logo y el botón hamburguesa */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-img {
+  height: 60px;
+  width: auto;  
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--texto);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Lista de enlaces de navegación */
+.navbar-links {
+  list-style: none;
+  display: flex; /* Mantenemos flex para la vista de escritorio */
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-links li a:hover {
+  color: var(--principal);
+}
+
+
+/* --- Estilos para la Vista Móvil con Animación --- */
+@media (max-width: 768px) {
+  /* --- CAMBIO CLAVE 2: Hacemos que el contenedor del logo ocupe todo el ancho --- */
+  .navbar-container {
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+  
+  .navbar-links {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, padding 0.4s ease-out;
+
+    /* Estilos del panel desplegable */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 0;
+    
+    /* Estos estilos ya no son necesarios porque el menú ahora es un hijo flex del navbar */
+    /* position: absolute; */
+    /* top: 100%; */
+    /* left: 0; */
+    
+    background-color: #ffffff;
+    padding: 0 1rem;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    border-bottom: 2px solid var(--principal);
+  }
+
+  .navbar-links.activo {
+    max-height: 500px;
+    opacity: 1;
+    padding: 1rem 1rem;
+    margin-top: 0.5rem; /* Pequeño espacio para separar del logo */
+  }
+
+  .navbar-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-links li a {
+    display: block;
+    padding: 1rem 0;
+  }
+}

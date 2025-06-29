@@ -1,0 +1,122 @@
+/* ============================================== */
+/* === ARCHIVO FOOTER.CSS (VERSIÓN FINALÍSIMA) === */
+/* ============================================== */
+
+/* --- Estilos para Escritorio (Layout de 4 columnas) --- */
+.footer {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 1rem 2rem;
+  padding: 1.5rem 2.5rem;
+  background-color: var(--fondo);
+  border-top: 2px solid var(--principal);
+}
+
+.footer-logo-img {
+  max-height: 80px;
+  width: auto;
+}
+
+.footer-logo-link {
+  width: 150px;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-info a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--texto);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-info a:hover {
+  color: var(--principal);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.2rem;
+  justify-self: end; /* Alinea el bloque de iconos a la derecha de su celda */
+}
+
+.footer-social a {
+  color: var(--texto-secundario);
+  font-size: 1.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: var(--principal);
+  transform: scale(1.1);
+}
+
+.footer-copy {
+  text-align: right; /* Alineamos a la derecha en escritorio */
+  font-size: 0.85rem;
+  color: var(--texto-secundario);
+}
+
+.footer-legal-links {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end; /* Alineamos a la derecha en escritorio */
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-legal-links a {
+  color: var(--texto-secundario);
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.footer-legal-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-legal-links span {
+  color: var(--texto-secundario);
+}
+
+
+/* ================================= */
+/* === DISEÑO RESPONSIVO (FINAL) === */
+/* ================================= */
+@media (max-width: 900px) {
+  .footer {
+    grid-template-columns: 1fr; /* 1. Todo se apila en una columna */
+    justify-items: center;    /* 2. Cada bloque se centra */
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;       /* 3. El texto dentro de los bloques también se centra */
+  }
+
+  .footer-info {
+    flex-direction: column; /* 4. Los links de contacto se apilan verticalmente */
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  /* 5. ARREGLO FINAL: Centramos los íconos de redes sociales en su fila */
+  .footer-social {
+      justify-content: center;
+  justify-self: center; /* Añade esta línea para centrar en grid */
+  }
+
+  /* 6. Devolvemos el centrado al copyright y los links legales */
+  .footer-copy, .footer-legal-links {
+    text-align: center;
+    justify-content: center;
+  }
+}

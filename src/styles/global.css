@@ -1,0 +1,544 @@
+/* Variables */
+:root {
+  --principal: #d1b3bd;
+  --principal-hover: #c39ba9;
+  --fondo: #ffffff;
+  --texto: #333333;
+  --texto-secundario: #666666;
+  --rosa-elegante: #e91e63;
+}
+
+/* Reset general */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: 'Avenir', system-ui, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Animación fade-in */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: aparecer 0.8s ease-out forwards;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.bienvenida {
+  position: relative;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.5);
+}
+
+.bienvenida h1 {
+  font-size: 2.5rem;
+  color: white;
+  z-index: 1;
+}
+
+.bienvenida .subtitulo {
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 1rem;
+  z-index: 1;
+}
+
+.boton-agendar {
+  margin-top: 2rem;
+  z-index: 1;
+}
+
+.boton-agendar button {
+  background-color: var(--principal);
+  color: var(--fondo);
+  font-weight: bold;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton-agendar button:hover {
+  background-color: var(--rosa-elegante);
+  transform: scale(1.1);
+}
+
+/* Intro procedimientos (texto en blanco) */
+.intro-procedimientos {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 0 2rem;
+  color: white;
+}
+
+.intro-procedimientos h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro-procedimientos p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Servicios */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+.servicio-card {
+  background-color: var(--principal);
+  color: var(--texto);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.servicio-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.servicio-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Formulario agendar */
+.formulario-agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 1rem;
+}
+
+input, textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--principal);
+  background: var(--fondo);
+  color: var(--texto);
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 2px solid var(--principal-hover);
+}
+
+/* ================== */
+/* NUEVOS ESTILOS EXTRAÍDOS DE Inicio.jsx */
+/* ================== */
+
+.conoceme-seccion {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.tarjeta-doctora {
+  width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 2px solid #d1b3bd;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-doctora img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.tarjeta-doctora h3 {
+  margin: 0;
+}
+
+.tarjeta-doctora p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.boton-ver-mas {
+  align-self: center;
+  margin-top: 1rem;
+  background: #d1b3bd;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #000;
+}
+
+.carrusel-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+/* ======================================================== */
+/* === NUEVOS ESTILOS PARA CARRUSEL DE SERVICIOS DESTACADOS === */
+/* ======================================================== */
+
+/* La imagen de fondo de cada slide */
+.carrusel-imagen-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Una capa oscura semitransparente para que el texto resalte */
+.carrusel-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  z-index: 2;
+}
+
+/* El contenedor del texto y el botón */
+.carrusel-slide-contenido {
+  position: relative;
+  z-index: 3;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinea el contenido en la parte de abajo */
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.carrusel-slide-contenido h3 {
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.carrusel-slide-contenido p {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  max-width: 80%;
+}
+
+.boton-carrusel {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton-carrusel:hover {
+  background-color: white;
+  color: var(--texto);
+}
+.carrusel-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carrusel-botones {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+
+.carrusel-botones button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+}
+
+.carrusel-botones button.active {
+  background-color: #d1b3bd;
+}
+
+.testimonios-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.testimonio-card {
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid #d1b3bd;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.testimonio-card p {
+  font-style: italic;
+  color: #555;
+}
+
+.testimonio-card h4 {
+  margin-top: 1rem;
+  color: #000;
+}
+/* Corregimos las tarjetas de título para que no pierdan el fondo, bordes y sombras */
+
+.section-title {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+/* Busca esta regla en global.css y reemplázala */
+.section-title-container {
+  display: block; /* Lo cambiamos para poder asignarle un ancho y margen */
+  width: 800px; /* Ancho fijo */
+  margin: 0 auto; /* Centramos el contenedor */
+  background: #ffffff;
+  padding: 1.5rem 3rem; /* Mantenemos el padding vertical */
+  box-sizing: border-box; /* Importante para que el padding no afecte el ancho total */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border: 2px solid #d1b3bd;
+}
+
+.section-title-container h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: #000;
+  letter-spacing: 1px;
+}
+
+/* Arreglamos el tamaño del carrusel */
+.carrusel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.carrusel-slide-inner {
+  border: 5px solid #d1b3bd;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carrusel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease;
+}
+
+.carrusel-slide-inner {
+  border: 5px solid #d1b3bd;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.testimonios-carrusel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.testimonios-carrusel {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s ease;
+  align-items: center;
+}
+
+.testimonio-card {
+  width: 280px;
+  height: auto;
+  padding: 1.5rem;
+  background: #fff;
+  border: 2px solid #d1b3bd;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.6;
+  transform: scale(0.8);
+}
+
+.testimonio-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.testimonio-card.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.arrow {
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: #d1b3bd;
+  cursor: pointer;
+  transition: transform 0.2s;
+  user-select: none;
+}
+
+.arrow:hover {
+  transform: scale(1.2);
+}
+/* Estilo especial solo para el botón Ver Servicios */
+
+.boton-ver-servicios {
+  background: #d1b3bd;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.boton-ver-servicios:hover {
+  background: #ff006a;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 6px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+/* ============================================== */
+/* === AJUSTE RESPONSIVO PARA TÍTULOS DE SECCIÓN === */
+/* ============================================== */
+
+/* Para tabletas y pantallas medianas */
+@media (max-width: 900px) {
+  .section-title-container {
+    width: 90%; /* Ancho flexible para que quepa en la pantalla */
+    padding: 1rem 1.5rem;
+  }
+  .section-title-container h2 {
+    font-size: 1.5rem; /* Letra más pequeña */
+  }
+}
+
+/* Para celulares y pantallas pequeñas */
+@media (max-width: 480px) {
+  .section-title-container {
+    padding: 1rem; /* Menos padding para ahorrar espacio */
+  }
+  .section-title-container h2 {
+    font-size: 1.3rem; /* Letra aún más pequeña */
+  }
+}

@@ -1,0 +1,177 @@
+/* ================================================== */
+/* === ARCHIVO SERVICIOS.CSS (VERSIÓN FINAL COMPLETA) === */
+/* ================================================== */
+
+/* --- Contenedor y Título de la Página --- */
+.servicios-page-container {
+  max-width: 1400px;
+  margin: 2rem auto 6rem;
+  padding: 0 2rem;
+}
+.servicios-page-container > h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--texto);
+  margin-bottom: 0.5rem;
+}
+.subtitulo-servicios {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--texto-secundario);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+/* --- Cuadrícula de Servicios --- */
+.servicios-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- Tarjeta de Servicio Individual --- */
+.servicio-item {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  background-color: var(--principal); 
+  color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.servicio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(209, 179, 189, 0.4);
+}
+.servicio-item.active {
+  background-color: #fff;
+  border-color: var(--principal);
+}
+.servicio-item.active .servicio-header-texto h3 { color: var(--texto); }
+.servicio-item.active .servicio-header-texto p { color: var(--texto-secundario); }
+
+.servicio-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+.servicio-header-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.servicio-header-texto h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.servicio-header-texto p {
+  margin: 0;
+  color: #fff;
+}
+
+/* --- Panel Expandido de Detalles --- */
+.servicio-detalle-expandido {
+  grid-column: 1 / -1;
+  padding: 2rem 0;
+  background-color: #fdf6f8;
+  border-radius: 12px;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInDetalles 0.6s ease;
+  border: 1px solid rgba(209, 179, 189, 0.5);
+}
+
+.detalle-contenido-wrapper {
+  max-width: 1100px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+@keyframes fadeInDetalles {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detalle-columna { flex: 1; min-width: 300px; }
+.detalle-columna h4 {
+  margin-top: 0; margin-bottom: 1.5rem;
+  font-size: 1.5rem; color: var(--principal);
+  padding-bottom: 0.5rem; border-bottom: 2px solid var(--principal);
+}
+
+.video-player-wrapper { width: 100%; }
+.video-poster { position: relative; cursor: pointer; border-radius: 8px; overflow: hidden; width: 100%; padding-top: 56.25%; }
+.video-poster img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.play-button-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.3); color: white; font-size: 4rem; }
+.video-container { position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; border-radius: 8px; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.beneficios-lista { list-style: none; padding-left: 0; margin: 0; }
+.beneficios-lista li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; color: var(--texto-secundario); }
+.beneficios-lista li::before { content: '✓'; position: absolute; left: 0; color: var(--principal); font-weight: bold; }
+
+.faq-list-interna { display: flex; flex-direction: column; gap: 0.5rem; }
+.faq-item-interno { border-bottom: 1px solid rgba(209, 179, 189, 0.4); padding-bottom: 1rem; }
+.faq-item-interno:last-child { border-bottom: none; }
+.faq-pregunta-interno { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.faq-pregunta-interno h5 { margin: 0; font-size: 1rem; font-weight: 500; color: var(--texto); }
+.faq-icono { font-size: 1.8rem; font-weight: 300; color: var(--principal); transition: transform 0.3s ease; }
+.faq-icono.open { transform: rotate(45deg); }
+.faq-respuesta-interno { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease-in-out; font-size: 0.95rem; color: var(--texto-secundario); }
+.faq-respuesta-interno.open { max-height: 200px; opacity: 1; padding-top: 0.8rem; }
+.faq-respuesta-interno p { margin: 0; }
+
+/* === ESTILOS RESTAURADOS PARA FAQ GENERAL === */
+.faq-general-container {
+  max-width: 900px; margin: 4rem auto 6rem; padding: 2rem;
+  background-color: #fff; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.faq-general-container h2 {
+  text-align: center; font-size: 2.5rem; color: var(--texto);
+  margin-top: 0; margin-bottom: 2rem;
+}
+.faq-general-list { display: flex; flex-direction: column; gap: 1rem; }
+.general-faq-item { border-bottom: 1px solid #e0e0e0; padding-bottom: 1.5rem; }
+.general-faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.general-faq-pregunta { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.general-faq-pregunta h3 { margin: 0; font-size: 1.2rem; color: var(--texto); font-weight: 500; }
+.general-faq-respuesta { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease-in-out; font-size: 1rem; color: var(--texto-secundario); padding-right: 2rem; }
+.general-faq-respuesta.open { max-height: 200px; opacity: 1; padding-top: 1rem; }
+.general-faq-respuesta p { margin: 0; }
+.general-faq-pregunta .faq-icono { font-size: 2rem; }
+
+
+/* ================================================= */
+/* === ESTILOS RESPONSIVOS DEFINITIVOS === */
+/* ================================================= */
+
+/* Para Tabletas (1024px o menos) */
+@media (max-width: 1024px) {
+  .servicios-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Para Móviles Grandes y Tabletas Verticales (768px o menos) */
+@media (max-width: 768px) {
+  .servicios-page-container { padding: 0 1rem; }
+  .servicios-grid-container { grid-template-columns: 1fr; }
+  .servicio-header { flex-direction: column; text-align: center; }
+  .servicio-header-img { width: 80px; height: 80px; }
+  .servicio-header-texto h3 { font-size: 1.3rem; }
+  .detalle-contenido-wrapper { flex-direction: column; gap: 2rem; }
+}
+
+/* Para Celulares Pequeños (480px o menos) */
+@media (max-width: 480px) {
+  .servicios-page-container > h1 { font-size: 2.2rem; }
+  .servicios-page-container .subtitulo-servicios { font-size: 1rem; }
+  .faq-general-container h2 { font-size: 1.8rem; }
+}
