@@ -542,3 +542,26 @@ input:focus, textarea:focus {
     font-size: 1.3rem; /* Letra aún más pequeña */
   }
 }
+/* ========================================================= */
+/* === ESTILO PARA PANTALLAS GRANDES (ANCHO MÁXIMO DEL HERO) === */
+/* ========================================================= */
+
+/* Esta regla solo se aplica si la pantalla mide 1600px o más de ancho */
+@media (min-width: 1600px) {
+  .bienvenida {
+    /* Le damos un ancho máximo para que no se estire indefinidamente */
+    max-width: 1600px;
+    
+    /* La centramos horizontalmente en la página */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Opcional: añadimos bordes redondeados y una sombra 
+       para que el "corte" se vea como un panel elegante */
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
+    /* Importante para que el video también respete los bordes redondeados */
+    overflow: hidden; 
+  }
+}
