@@ -21,9 +21,9 @@ export default function Footer() {
           <FontAwesomeIcon icon={faMapMarkerAlt} />
           Ubicación
         </a>
-        <a href="mailto:contacto@andrea.com">
+        <a href="mailto:dra.andrea.diazm@gmail.com">
           <FontAwesomeIcon icon={faEnvelope} />
-          contacto@andrea.com
+          dra.andrea.diazm@gmail.com
         </a>
         {/* ENLACE DE TELÉFONO AÑADIDO */}
         <a href="tel:+573001234567">
