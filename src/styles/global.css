@@ -48,13 +48,26 @@ html, body, #root {
   text-align: center;
 }
 
+/* ======================================================= */
+/* === ESTILO DEFINITIVO PARA EL VIDEO DE FONDO === */
+/* ======================================================= */
+
 .video-background {
+  /* 1. Lo posicionamos absolutamente relativo a la sección 'bienvenida' */
   position: absolute;
   top: 0;
   left: 0;
+
+  /* 2. Le ordenamos que ocupe el 100% del ancho y alto de su contenedor */
   width: 100%;
   height: 100%;
+
+  /* 3. LA MAGIA: Esta es la propiedad más importante */
+  /* Escala el video hasta que cubra todo el espacio, manteniendo su proporción, 
+     y recorta cualquier parte que sobre (arriba/abajo o a los lados) */
   object-fit: cover;
+
+  /* 4. Lo enviamos al fondo y le ponemos el filtro oscuro */
   z-index: -1;
   filter: brightness(0.5);
 }
