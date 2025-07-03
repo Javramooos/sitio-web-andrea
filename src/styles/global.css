@@ -26,6 +26,9 @@ html, body, #root {
   font-family: 'Avenir', system-ui, Helvetica, Arial, sans-serif;
   box-sizing: border-box;
 }
+a, button, input, textarea, select {
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* Animación fade-in */
 .fade-in {
