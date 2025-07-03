@@ -45,19 +45,22 @@ export default function Inicio() {
   return (
     <div className="inicio-container" style={{ margin: 0, padding: 0, overflowX: "hidden" }}>
 
-      {/* Bienvenida */}
-      <section className="bienvenida fade-in" style={{ position: 'relative', overflow: 'hidden', height: '100vh', margin: 0, padding: 0 }}>
-        <video autoPlay loop muted playsInline style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1, filter: 'brightness(0.5)' }}>
-          <source src="/assets/andrea.mp4" type="video/mp4" />
-        </video>
-        <h1>La Armonía que Buscas, los Resultados que Amas.</h1>
-        <p className="subtitulo">Tu espacio de bienestar, belleza y cuidado personalizado  Tu bienestar es nuestra prioridad.</p>
-        <div className="boton-agendar">
-          <Link to="/agenda">
-            <button>Agende acá</button>
-          </Link>
-        </div>
-      </section>
+{/* --- Reemplaza tu sección de bienvenida con esta --- */}
+<section className="bienvenida fade-in">
+  {/* Ahora el video usa una clase en lugar de estilos en línea */}
+  <video autoPlay loop muted playsInline className="video-background">
+    <source src="/assets/andrea.mp4" type="video/mp4" />
+  </video>
+  
+  {/* El contenido de texto no cambia */}
+  <h1>La Armonía que Buscas, los Resultados que Amas.</h1>
+  <p className="subtitulo">Tu espacio de bienestar, belleza y cuidado personalizado  Tu bienestar es nuestra prioridad.</p>
+  <div className="boton-agendar">
+    <Link to="/agenda">
+      <button>Agende acá</button>
+    </Link>
+  </div>
+</section>
 
       {/* Conozca a la doctora */}
       <section className="fade-in" style={{ textAlign: 'center', marginTop: '2rem' }}>
