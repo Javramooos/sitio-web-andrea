@@ -1,259 +1,110 @@
 /* ================================================== */
-/* === ARCHIVO PAGO.CSS (CON ARREGLO FINAL) === */
+/* === ARCHIVO PAGO.CSS (CON CORRECCIONES FINALES) === */
 /* ================================================== */
 
-/* --- Contenedor y Título de la Página --- */
-.pago-page-container {
-  max-width: 1200px;
-  margin: 2rem auto 6rem;
-  padding: 0 1rem;
-}
-.pago-titulo-container {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-.pago-titulo-container h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-.pago-titulo-container p {
-  font-size: 1.2rem;
-  color: var(--texto-secundario);
-}
+.blog-page-container { max-width: 1200px; margin: 2rem auto 6rem; padding: 0 1rem; }
 
-/* --- Filtros --- */
-.filtros-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
+/* --- Slider de Artículos Destacados --- */
+.featured-articles-swiper {
+  width: 100%; height: 450px;
+  border-radius: 16px; margin-bottom: 3rem;
 }
-.filtro-btn {
-  padding: 0.6rem 1.2rem;
-  border: 1px solid var(--principal);
-  background-color: #fff;
-  color: var(--principal);
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
+.articulo-destacado-slide {
+  display: block; position: relative;
+  width: 100%; height: 100%;
+  overflow: hidden; color: white; text-decoration: none;
 }
-.filtro-btn:hover {
-  background-color: #fdf6f8;
-  transform: translateY(-2px);
+.articulo-destacado-slide img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.4s ease;
 }
-.filtro-btn.active {
-  background-color: var(--principal);
-  color: #fff;
+.articulo-destacado-slide:hover img { transform: scale(1.05); }
+.destacado-overlay {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 20%, transparent 70%);
+  padding: 2.5rem; display: flex; flex-direction: column;
+  justify-content: flex-end;
 }
-
-/* --- Cuadrícula y Tarjetas --- */
-.pagos-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
+.categoria-tag {
+  background-color: var(--principal); color: white;
+  padding: 0.3rem 0.8rem; border-radius: 20px;
+  font-size: 0.8rem; font-weight: bold;
+  align-self: flex-start; margin-bottom: 1rem;
 }
-.pago-item {
-  border: 1px solid transparent;
-  border-radius: 12px;
-  background-color: var(--principal);
-  color: #fff;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  height: fit-content;
+.destacado-overlay h2 {
+  font-size: 2.5rem; margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  text-align: left;
 }
-.pago-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(209, 179, 189, 0.4);
-}
-.pago-item.active {
-  background-color: #fff;
-  border-color: var(--principal);
-}
-.pago-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-}
-.pago-imagen-pequena {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-/* === ESTA ES LA NUEVA REGLA QUE ARREGLA EL DESBORDAMIENTO === */
-.pago-header-texto {
-  min-width: 0; /* Permite que el contenedor del texto se encoja */
-}
-
-.pago-item.active .pago-header-texto h3 { color: var(--texto); }
-.pago-item.active .pago-header-texto p { color: var(--texto-secundario); }
-.pago-header-texto h3 { font-size: 1.2rem; margin-bottom: 0.25rem; color: #fff; }
-.pago-header-texto p { font-size: 0.9rem; color: #fff; margin:0; }
-
-/* --- Panel Expandido --- */
-.pago-detalle-expandido {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  padding: 2rem;
-  background-color: #fdf6f8;
-  border-radius: 12px;
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
-  animation: fadeInDetalles 0.6s ease;
-  border: 1px solid rgba(209, 179, 189, 0.5);
-}
-/* ... (El resto de tus estilos para el panel de pago, que ya funcionan bien) ... */
-
-
-/* ============================================== */
-/* === ESTILOS RESPONSIVOS PARA PÁGINA DE PAGO === */
-/* ============================================== */
-@media (max-width: 900px) {
-  .pago-detalle-expandido {
-    flex-direction: column;
-    padding: 1.5rem;
-  }
-  .detalle-columna-pago {
-    min-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .pago-titulo-container h1 { font-size: 2.2rem; }
-  .pago-titulo-container p { font-size: 1rem; }
-}
-/* ============================================== */
-/* === ARREGLO FINAL PARA BOTÓN DE PAGAR AHORA === */
-/* ============================================== */
-
-.boton-pagar-grande {
-  width: 100%;
-  padding: 1rem;
-  margin-top: 1rem; /* Espacio para separarlo del contenido de arriba */
-  background-color: var(--principal);
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.boton-pagar-grande:hover {
-  background-color: var(--principal-hover);
-  transform: scale(1.02);
-}
-/* --- Estilos para la lista de beneficios con checkmarks --- */
-
-.beneficios-pago-container {
-  margin: 1.5rem 0;
-}
-
-.beneficios-pago-container h4 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  color: var(--texto);
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.5rem;
-}
-
-.beneficios-lista-pago {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.beneficios-lista-pago li {
-  padding-left: 1.5rem;
-  position: relative;
-  margin-bottom: 0.75rem;
-  color: var(--texto-secundario);
-  font-size: 0.95rem;
-}
-
-/* Esta es la regla que crea el "chulito" */
-.beneficios-lista-pago li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--principal);
-  font-weight: bold;
-}
-/* --- Estilos para los campos de monto en el formulario de pago --- */
-
-.input-group-pago {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.input-group-pago label {
-  font-weight: 500;
-  color: var(--texto);
-}
-
-.input-group-pago select,
-.input-group-pago input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-}
-
-/* Estilo para el campo del MONTO para que se vea grande y a la derecha */
-.input-group-pago input#monto {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: right;
-  color: var(--principal);
-}
-
-.input-group-pago select:focus,
-.input-group-pago input:focus {
-  outline: none;
-  border-color: var(--principal);
-  box-shadow: 0 0 0 2px rgba(209, 179, 189, 0.4);
-}
-
-/* Estilo para el texto "en letras" */
-.monto-en-letras {
-  text-align: right;
-  font-size: 0.9rem;
-  color: var(--texto-secundario);
+.destacado-overlay p {
+  font-size: 1.2rem; /* Un poco más grande para el subtítulo */
+  max-width: 100%; /* El texto es corto, no necesita límite */
+  text-wrap: balance;
+  margin-top: 0.5rem; text-align: left;
+  line-height: 1.4;
   font-style: italic;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background-color: #f7f7f7;
-  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.9);
 }
-/* Busca esta regla en Pago.css y reemplázala */
+/* Estilos para los botones y paginación de Swiper */
+.featured-articles-swiper .swiper-button-next,
+.featured-articles-swiper .swiper-button-prev {
+  color: #fff;
+}
+.featured-articles-swiper .swiper-pagination-bullet-active {
+  background: #fff;
+}
 
-.pago-precio {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--principal);
-  margin: 0 0 1.5rem 0;
+/* --- Layout Principal (Contenido + Barra Lateral) --- */
+.blog-content-wrapper { display: grid; grid-template-columns: 2.5fr 1fr; gap: 3rem; }
+.blog-main-content h3 { font-size: 2rem; margin-top: 0; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
 
-  /* --- ESTILOS AÑADIDOS PARA UNIFICAR EL DISEÑO --- */
-  text-align: right; /* Alineamos el precio a la derecha */
-  background-color: #f7f7f7; /* Le damos un fondo sutil */
-  padding: 0.5rem 1rem; /* Añadimos espacio interno */
-  border-radius: 8px; /* Bordes redondeados */
+/* === ESTILOS RESTAURADOS PARA LAS TARJETAS DE ARTÍCULO === */
+.articulo-card {
+  display: flex;
+  gap: 1.5rem;
+  text-decoration: none;
+  color: var(--texto);
+  margin-top: 2.5rem;
+  transition: background-color 0.3s ease;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.articulo-card:hover { background-color: #f9f9f9; }
+.articulo-card .card-imagen {
+  width: 250px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.articulo-card .card-imagen img { width: 100%; height: 100%; object-fit: cover; }
+.card-texto h4 { font-size: 1.3rem; margin: 0.5rem 0 0.8rem; }
+.card-texto p { font-size: 0.95rem; color: var(--texto-secundario); line-height: 1.6; }
+.leer-mas { margin-top: 1rem; color: var(--principal); font-weight: bold; }
+
+/* --- Barra Lateral --- */
+.blog-sidebar { position: sticky; top: 120px; height: fit-content; }
+.blog-sidebar h4 { margin-top: 0; font-size: 1.2rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eee; }
+.sidebar-card {
+  display: block; background: var(--principal); color: white;
+  padding: 1.5rem; border-radius: 12px; text-decoration: none;
+  font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem;
+  transition: all 0.3s ease; text-align: center;
+}
+.sidebar-card:hover {
+  background-color: var(--principal-hover); transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* --- Responsividad para el Blog --- */
+@media (max-width: 900px) {
+  .blog-content-wrapper { grid-template-columns: 1fr; }
+  .blog-sidebar { position: static; margin-top: 3rem; }
+}
+@media (max-width: 600px) {
+  .featured-articles-swiper { height: 380px; }
+  .destacado-overlay h2 { font-size: 1.8rem; }
+  .destacado-overlay { padding: 1.5rem; }
+  .articulo-card { flex-direction: column; }
+  .articulo-card .card-imagen { width: 100%; height: 200px; }
 }

@@ -1,177 +1,131 @@
 /* ================================================== */
-/* === ARCHIVO SERVICIOS.CSS (VERSIÓN FINAL COMPLETA) === */
+/* === ARCHIVO SERVICIOS.CSS (DISEÑO DEFINITIVO) === */
 /* ================================================== */
 
-/* --- Contenedor y Título de la Página --- */
 .servicios-page-container {
   max-width: 1400px;
-  margin: 2rem auto 6rem;
+  margin: 4rem auto 6rem;
   padding: 0 2rem;
 }
-.servicios-page-container > h1 {
-  text-align: center;
-  font-size: 3rem;
-  color: var(--texto);
-  margin-bottom: 0.5rem;
-}
-.subtitulo-servicios {
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--texto-secundario);
-  max-width: 700px;
-  margin: 0 auto 3rem;
-}
+.servicios-titulo-container { text-align: center; margin-bottom: 3rem; }
+.servicios-titulo-container h1 { font-size: 3rem; }
+.servicios-titulo-container p { font-size: 1.2rem; color: var(--texto-secundario); max-width: 600px; margin: 0.5rem auto 0; }
 
-/* --- Cuadrícula de Servicios --- */
-.servicios-grid-container {
+.filtros-container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.filtro-btn { padding: 0.6rem 1.2rem; border: 1px solid var(--principal); background-color: #fff; color: var(--principal); border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; }
+.filtro-btn:hover { background-color: #fdf6f8; }
+.filtro-btn.active { background-color: var(--principal); color: #fff; }
+
+/* --- Layout Principal de 2 Columnas --- */
+.servicios-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 380px 1fr;
+  gap: 3rem;
+  align-items: start;
 }
 
-/* --- Tarjeta de Servicio Individual --- */
-.servicio-item {
-  border: 1px solid transparent;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  background-color: var(--principal); 
-  color: #fff;
-  transition: all 0.3s ease;
-  cursor: pointer;
+/* --- Columna Izquierda: Menú Carrusel --- */
+.servicios-menu-sidebar {
+  position: relative;
+  height: 580px; /* Altura aprox. para 5 items */
 }
-.servicio-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(209, 179, 189, 0.4);
+.servicios-menu-swiper {
+  height: 100%;
 }
-.servicio-item.active {
-  background-color: #fff;
-  border-color: var(--principal);
+.servicios-menu-swiper .swiper-slide {
+  height: auto !important; /* Swiper necesita esto para calcular bien */
+  padding: 5px 0;
 }
-.servicio-item.active .servicio-header-texto h3 { color: var(--texto); }
-.servicio-item.active .servicio-header-texto p { color: var(--texto-secundario); }
-
-.servicio-header {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-}
-.servicio-header-img {
-  width: 100px;
+.menu-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.2rem; border-radius: 12px;
+  border: 1px solid #f0f0f0; background-color: #fff;
+  cursor: pointer; transition: all 0.3s ease;
   height: 100px;
-  border-radius: 8px;
-  object-fit: cover;
-  flex-shrink: 0;
 }
-.servicio-header-texto h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.5rem;
-  color: #fff;
+.menu-item:hover {
+  border-color: rgba(209, 179, 189, 0.5);
+  transform: translateX(5px);
 }
-.servicio-header-texto p {
-  margin: 0;
-  color: #fff;
+.menu-item.active {
+  background-color: var(--principal); color: #fff;
+  border-color: var(--principal); box-shadow: 0 8px 25px rgba(209, 179, 189, 0.4);
 }
+.menu-item.active h2, .menu-item.active p { color: #fff; }
+.menu-item-icono { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.menu-item-texto h2 { font-size: 1.1rem; margin: 0 0 0.25rem 0; font-weight: 500; }
+.menu-item-texto p { font-size: 0.9rem; color: var(--texto-secundario); margin: 0; line-height: 1.4; transition: color 0.3s ease; }
 
-/* --- Panel Expandido de Detalles --- */
-.servicio-detalle-expandido {
-  grid-column: 1 / -1;
-  padding: 2rem 0;
-  background-color: #fdf6f8;
-  border-radius: 12px;
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
-  animation: fadeInDetalles 0.6s ease;
-  border: 1px solid rgba(209, 179, 189, 0.5);
+.menu-nav-arrow {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 40px; height: 40px; border-radius: 50%; background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); color: var(--principal);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10; transition: all 0.2s ease;
 }
+.menu-nav-arrow:hover { background: var(--principal); color: #fff; }
+.menu-nav-prev { top: -15px; }
+.menu-nav-next { bottom: -15px; }
+.swiper-button-disabled { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
 
-.detalle-contenido-wrapper {
-  max-width: 1100px;
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
+/* --- Columna Derecha: Contenido --- */
+.servicio-detalle-main {
+  background-color: #fff; padding: 2rem; border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
 }
-
-@keyframes fadeInDetalles {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.detalle-columna { flex: 1; min-width: 300px; }
-.detalle-columna h4 {
-  margin-top: 0; margin-bottom: 1.5rem;
-  font-size: 1.5rem; color: var(--principal);
-  padding-bottom: 0.5rem; border-bottom: 2px solid var(--principal);
-}
-
-.video-player-wrapper { width: 100%; }
-.video-poster { position: relative; cursor: pointer; border-radius: 8px; overflow: hidden; width: 100%; padding-top: 56.25%; }
+.video-player-wrapper { width: 100%; border-radius: 12px; overflow:hidden; }
+.video-poster { position: relative; cursor: pointer; width: 100%; padding-top: 56.25%; background-color: #e0e0e0; }
 .video-poster img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 .play-button-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.3); color: white; font-size: 4rem; }
-.video-container { position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; border-radius: 8px; }
+.video-container { position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-.beneficios-lista { list-style: none; padding-left: 0; margin: 0; }
-.beneficios-lista li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; color: var(--texto-secundario); }
-.beneficios-lista li::before { content: '✓'; position: absolute; left: 0; color: var(--principal); font-weight: bold; }
+.detalle-contenido-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+.detalle-contenido-grid h3 { margin-top: 0; font-size: 1.5rem; color: var(--texto); }
+.beneficios-lista { list-style: none; padding: 0; }
+.beneficios-lista li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; }
+.beneficios-lista li::before { content: '✓'; position: absolute; left: 0; color: var(--principal); }
 
-.faq-list-interna { display: flex; flex-direction: column; gap: 0.5rem; }
-.faq-item-interno { border-bottom: 1px solid rgba(209, 179, 189, 0.4); padding-bottom: 1rem; }
-.faq-item-interno:last-child { border-bottom: none; }
-.faq-pregunta-interno { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-.faq-pregunta-interno h5 { margin: 0; font-size: 1rem; font-weight: 500; color: var(--texto); }
-.faq-icono { font-size: 1.8rem; font-weight: 300; color: var(--principal); transition: transform 0.3s ease; }
+/* Acordeón de FAQ */
+.faq-acordeon { display: flex; flex-direction: column; gap: 0.5rem; }
+.acordeon-item { border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem; }
+.acordeon-item:last-child { border-bottom: none; }
+.acordeon-pregunta { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.acordeon-pregunta h3 { margin: 0.5rem 0; font-size: 1rem; font-weight: 500; }
+.faq-icono { font-size: 1.5rem; font-weight: 300; color: var(--principal); transition: transform 0.3s ease; }
 .faq-icono.open { transform: rotate(45deg); }
-.faq-respuesta-interno { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease-in-out; font-size: 0.95rem; color: var(--texto-secundario); }
-.faq-respuesta-interno.open { max-height: 200px; opacity: 1; padding-top: 0.8rem; }
-.faq-respuesta-interno p { margin: 0; }
+.acordeon-respuesta { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease-in-out; }
+.acordeon-respuesta.open { max-height: 200px; opacity: 1; padding-top: 1rem; }
+.acordeon-respuesta p { margin: 0; border-top: 1px solid #eee; padding-top: 1rem; line-height: 1.7; }
 
-/* === ESTILOS RESTAURADOS PARA FAQ GENERAL === */
-.faq-general-container {
-  max-width: 900px; margin: 4rem auto 6rem; padding: 2rem;
-  background-color: #fff; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+/* ========================================================= */
+/* === ESTILOS PARA LA SECCIÓN DE PREGUNTAS FRECUENTES === */
+/* ========================================================= */
+
+.faq-servicios-container {
+  margin-top: 6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
-.faq-general-container h2 {
-  text-align: center; font-size: 2.5rem; color: var(--texto);
-  margin-top: 0; margin-bottom: 2rem;
+
+.faq-servicios-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
-.faq-general-list { display: flex; flex-direction: column; gap: 1rem; }
-.general-faq-item { border-bottom: 1px solid #e0e0e0; padding-bottom: 1.5rem; }
-.general-faq-item:last-child { border-bottom: none; padding-bottom: 0; }
-.general-faq-pregunta { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-.general-faq-pregunta h3 { margin: 0; font-size: 1.2rem; color: var(--texto); font-weight: 500; }
-.general-faq-respuesta { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease-in-out; font-size: 1rem; color: var(--texto-secundario); padding-right: 2rem; }
-.general-faq-respuesta.open { max-height: 200px; opacity: 1; padding-top: 1rem; }
-.general-faq-respuesta p { margin: 0; }
-.general-faq-pregunta .faq-icono { font-size: 2rem; }
-
-
-/* ================================================= */
-/* === ESTILOS RESPONSIVOS DEFINITIVOS === */
-/* ================================================= */
-
-/* Para Tabletas (1024px o menos) */
+/* --- Responsividad --- */
 @media (max-width: 1024px) {
-  .servicios-grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .servicios-layout { grid-template-columns: 1fr; }
+  .servicios-menu-sidebar { position: static; height: auto; margin-bottom: 2rem; }
+  .servicios-menu-swiper { height: 140px; }
+  .menu-nav-arrow { display: none; } /* Ocultamos las flechas custom y dejamos las de Swiper por defecto en horizontal si se necesitaran */
 }
-
-/* Para Móviles Grandes y Tabletas Verticales (768px o menos) */
 @media (max-width: 768px) {
-  .servicios-page-container { padding: 0 1rem; }
-  .servicios-grid-container { grid-template-columns: 1fr; }
-  .servicio-header { flex-direction: column; text-align: center; }
-  .servicio-header-img { width: 80px; height: 80px; }
-  .servicio-header-texto h3 { font-size: 1.3rem; }
-  .detalle-contenido-wrapper { flex-direction: column; gap: 2rem; }
-}
-
-/* Para Celulares Pequeños (480px o menos) */
-@media (max-width: 480px) {
-  .servicios-page-container > h1 { font-size: 2.2rem; }
-  .servicios-page-container .subtitulo-servicios { font-size: 1rem; }
-  .faq-general-container h2 { font-size: 1.8rem; }
+  .detalle-contenido-grid { grid-template-columns: 1fr; }
 }

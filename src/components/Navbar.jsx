@@ -26,7 +26,7 @@ export default function Navbar() {
         <li><Link to="/" onClick={toggleMenu}>Inicio</Link></li>
         <li><Link to="/servicios" onClick={toggleMenu}>Servicios</Link></li>
         <li><Link to="/agenda" onClick={toggleMenu}>Agendar</Link></li>
-        <li><Link to="/pago" onClick={toggleMenu}>Pago</Link></li>
+        <li><Link to="/pago" onClick={toggleMenu}>Blog</Link></li>
       </ul>
     </nav>
   );
