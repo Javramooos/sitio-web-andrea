@@ -1,15 +1,37 @@
-.inicio-container {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Paleta de Colores y Tipografías Globales --- */
+:root {
+  --primary-color: #F4ACB7;    /* Rosa principal para botones y acentos */
+  --secondary-color: #FFD8E2; /* Rosa claro secundario */
+  --accent-color: #FFE5E9;   /* Rosa muy claro para fondos sutiles */
+  --text-primary: #6D435A;     /* Texto principal oscuro con tono vino */
+  --text-secondary: #9D8189; /* Texto secundario más suave */
+  --background-color: #FFF0F5; /* Color de fondo general de la página */
+}
+
+/* --- Asignación de tipografías --- */
+body {
+  font-family: 'Manrope', 'Noto Sans', sans-serif;
+  background-color: var(--background-color); /* Aplicamos el color de fondo global */
+  color: var(--text-primary); /* Aplicamos el color de texto global */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* --- Clases de animación (de tu archivo original) --- */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
 }
 
 
-
-.contenido-superpuesto {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: white;
-  padding: 2rem;
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }

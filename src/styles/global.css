@@ -36,6 +36,9 @@ a, button, input, textarea, select {
   transform: translateY(30px);
   animation: aparecer 0.8s ease-out forwards;
 }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 
 @keyframes aparecer {
   to {
