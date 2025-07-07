@@ -129,3 +129,101 @@
 @media (max-width: 768px) {
   .detalle-contenido-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Para Celulares y pantallas más pequeñas */
+@media (max-width: 768px) {
+  .detalle-contenido-grid { 
+    grid-template-columns: 1fr; /* Apilamos beneficios y FAQs */
+  }
+}
+/* ================================================= */
+/* === AJUSTE RESPONSIVO PARA FLECHAS DE SERVICIOS === */
+/* ================================================= */
+
+@media (max-width: 1024px) {
+  /* Hacemos el contenedor del menú 'relative' para posicionar las flechas */
+  .servicios-menu-sidebar {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  /* Nos aseguramos de que las flechas sean visibles y las ajustamos */
+  .menu-nav-arrow {
+    display: flex; /* Anula cualquier 'display: none' que las oculte */
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Posicionamos las flechas arriba y abajo del carrusel vertical */
+  .menu-nav-prev {
+    top: 0;
+  }
+  .menu-nav-next {
+    bottom: 0;
+  }
+}
+/* ========================================================= */
+/* === AJUSTE RESPONSIVO PARA AÑADIR FLECHAS EN MÓVIL === */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+  /* Hacemos que el contenedor de la cuadrícula sea 'relative' 
+     para poder posicionar las flechas con respecto a él */
+  .servicios-grid-container {
+    position: relative;
+    padding: 0 35px; /* Dejamos espacio a los lados para las flechas */
+  }
+
+  /* Creamos las flechas usando pseudo-elementos ::before y ::after */
+  .servicios-grid-container::before,
+  .servicios-grid-container::after {
+    content: '›'; /* Símbolo de flecha derecha */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: var(--principal);
+    opacity: 0.4;
+    font-weight: bold;
+  }
+
+  /* Posicionamos la flecha derecha */
+  .servicios-grid-container::after {
+    right: 5px;
+  }
+
+  /* Posicionamos y giramos la flecha izquierda */
+  .servicios-grid-container::before {
+    content: '‹'; /* Símbolo de flecha izquierda */
+    left: 5px;
+    
+  }
+}
+/* Estilos para la flecha DENTRO de la tarjeta */
+.menu-item {
+  position: relative; /* Hacemos que la tarjeta sea el ancla */
+}
+
+.menu-item-arrow {
+  position: absolute;
+  right: 1.2rem; /* La separamos un poco del borde derecho */
+  top: 50%;
+  transform: translateY(-50%); /* La centramos verticalmente */
+  font-size: 1rem;
+  color: #ccc;
+  transition: all 0.3s ease;
+  opacity: 0; /* Por defecto, la flecha está oculta */
+}
+
+/* La flecha aparece cuando el mouse está sobre la tarjeta O cuando está activa */
+.menu-item:hover .menu-item-arrow,
+.menu-item.active .menu-item-arrow {
+  opacity: 1;
+  transform: translateY(-50%) translateX(5px); /* Pequeño movimiento al aparecer */
+}
+
+.menu-item.active .menu-item-arrow {
+  color: #fff; /* Cambia de color cuando la tarjeta está activa */
+}
