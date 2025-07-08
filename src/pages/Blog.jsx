@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAmazon } from '@fortawesome/free-brands-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
-import './Pago.css';
+import './Blog.css';
 
 // 1. Importamos los componentes y módulos necesarios de Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';

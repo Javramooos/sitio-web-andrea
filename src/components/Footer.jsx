@@ -7,7 +7,7 @@ import './Footer.css';
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer bg-gray-100 text-gray-800">
       {/* Elemento 1: Logo (sin cambios) */}
       <a href="/" aria-label="Volver al inicio" className="footer-logo-link">
         <img src="/assets/logo-andrea.png" alt="Logo de Clínica de Andrea" className="footer-logo-img" />

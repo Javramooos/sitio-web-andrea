@@ -75,7 +75,6 @@ export default function Agenda() {
       <div className="agenda-content-wrapper">
         <div className="form-container">
           <form className="formulario-agenda" id="formulario-de-cita" onSubmit={handleFormSubmit}>
-            {/* AÑADIMOS EL ATRIBUTO 'name' A CADA CAMPO */}
             <div className="input-group">
               <label htmlFor="nombre">Nombre Completo</label>
               <input id="nombre" name="nombre" type="text" placeholder="Ej: María Pérez" required />
@@ -108,7 +107,6 @@ export default function Agenda() {
                   </button>
                 ))}
               </div>
-              {/* Añadimos un input oculto para poder recoger el valor de la hora */}
               <input type="hidden" name="hora" value={horaSeleccionada} />
             </div>
             <div className="input-group">
