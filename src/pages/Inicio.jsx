@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'; // Importa useState y useEffect
 import './Inicio.css'; // Asegúrate de que la importación del CSS sigue aquí
+import DrDiazSection from '../components/DrDiazSection'; // Importa el nuevo componente
+import InfoSection from '../components/InfoSection'; // Importa el nuevo componente InfoSection
 
 // --- Datos para las secciones ---
 const testimonials = [
@@ -29,15 +32,43 @@ const testimonials = [
 ];
 
 const services = [
-  { name: 'Rejuvenecimiento Facial', image: 'https://via.placeholder.com/400x400?text=Rejuvenecimiento Facial' },
-  { name: 'Contorno Corporal', image: 'https://via.placeholder.com/400x400?text=Contorno Corporal' },
-  { name: 'Tratamientos de Piel', image: 'https://via.placeholder.com/400x400?text=Tratamientos de Piel' },
-  { name: 'Inyectables', image: 'https://via.placeholder.com/400x400?text=Inyectables' },
-  { name: 'Terapia Láser', image: 'https://via.placeholder.com/400x400?text=Terapia Láser' },
-  { name: 'Restauración Capilar', image: 'https://via.placeholder.com/400x400?text=Restauración Capilar' },
+  { name: 'Rejuvenecimiento Facial', image: '/assets/poster_facial.jpg', icon: '/assets/icons/facial_icon.svg' },
+  { name: 'Contorno Corporal', image: '/assets/poster_corporal.jpg', icon: '/assets/icons/body_icon.svg' },
+  { name: 'Cuidado de la Piel', image: '/assets/poster_piel.jpg', icon: '/assets/icons/skin_icon.svg' },
+  { name: 'Anti-Envejecimiento', image: '/assets/poster_antiage.jpg', icon: '/assets/icons/antiage_icon.svg' },
+  { name: 'Restauración Capilar', image: '/assets/poster_capilar.jpg', icon: '/assets/icons/hair_icon.svg' },
+  { name: 'Bienestar', image: '/assets/poster_bienestar.jpg', icon: '/assets/icons/wellness_icon.svg' },
 ];
 
+
+
 export default function Inicio() {
+  const [latestArticles, setLatestArticles] = useState([]);
+  const [loadingArticles, setLoadingArticles] = useState(true);
+  const [errorArticles, setErrorArticles] = useState(null);
+
+  useEffect(() => {
+    const fetchLatestArticles = async () => {
+      try {
+        // Asume que tu backend Strapi está corriendo en http://localhost:1337
+        // y que el endpoint para artículos es /api/articulos
+        const response = await fetch('http://localhost:1337/api/articulos?sort=createdAt:desc&pagination[limit]=2');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setLatestArticles(data.data);
+      } catch (error) {
+        console.error("Error fetching latest articles:", error);
+        setErrorArticles(error);
+      } finally {
+        setLoadingArticles(false);
+      }
+    };
+
+    fetchLatestArticles();
+  }, []);
+
   const toSlug = (str) => {
     return str.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
   };
@@ -74,6 +105,17 @@ export default function Inicio() {
             </div>
           </div>
 
+          {/* --- New Info Section --- */}
+          <InfoSection />
+
+          {/* --- Meet Dr. Andrea Diaz Section --- */}
+          <DrDiazSection
+            imageSrc="https://i0.wp.com/revistareplicante.com/wp-content/uploads/2011/06/dr-house-2.jpeg?fit=320%2C474&ssl=1"
+            mainTitle="Conoce a la Dra. Andrea Diaz"
+            mainSubtitle="Especialista en Medicina Estética Avanzada"
+            descriptionText="Con más de 10 años de experiencia, la Dra. Andrea Diaz es una especialista líder dedicada a ofrecer cuidado personalizado y lograr resultados naturales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed posuere magna, at aliquam quam. Vivamus pretium sit amet nisl dignissim luctus. Suspendisse ultrices gravida nisi, eget auctor nisl pulvinar et. In hac habitasse platea dictumst. Pellentesque tortor lacus, laoreet nec ligula a, egestas posuere urna. Suspendisse suscipit purus id aliquam feugiat. Vestibulum in nisi molestie, molestie erat vel, tincidunt nisl. Vestibulum dapibus sapien vel leo dictum feugiat. Maecenas eget est non ex vulputate congue. Suspendisse fringilla enim massa, vel fringilla nibh dapibus at. In hac habitasse platea dictumst. In hac habitasse platea dictumst. Sed consequat, erat ac vulputate pharetra, purus dui ultrices mauris, quis fermentum ex dui in orci."
+          />
+
           {/* --- Trusted by Patients Section --- */}
           <section className="trusted-patients-section">
             <h2 className="trusted-patients-title">Confiado por Pacientes</h2>
@@ -95,60 +137,6 @@ export default function Inicio() {
                   </div>
                 );
               })}
-            </div>
-          </section>
-
-          {/* --- Meet Dr. Andrea Diaz Section --- */}
-          <section className="dr-diaz-section">
-            <h2 className="dr-diaz-main-title">Conoce a la Dra. Andrea Diaz</h2>
-            <p className="dr-diaz-main-subtitle">Especialista en Medicina Estética Avanzada</p>
-            <div className="dr-diaz-content-wrapper">
-              <div className="dr-diaz-left-column">
-                <div className="dr-diaz-image-container">
-                  <div
-                    className="dr-diaz-image"
-                    style={{ backgroundImage: 'url("https://i0.wp.com/revistareplicante.com/wp-content/uploads/2011/06/dr-house-2.jpeg?fit=320%2C474&ssl=1")' }}
-                  ></div>
-                </div>
-                <div className="dr-diaz-text-content">
-                  <p className="dr-diaz-description">
-                    Con más de 10 años de experiencia, la Dra. Andrea Diaz es una especialista líder dedicada a ofrecer cuidado personalizado y lograr resultados naturales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed posuere magna, at aliquam quam. Vivamus pretium sit amet nisl dignissim luctus. Suspendisse ultrices gravida nisi, eget auctor nisl pulvinar et. In hac habitasse platea dictumst. Pellentesque tortor lacus, laoreet nec ligula a, egestas posuere urna. Suspendisse suscipit purus id aliquam feugiat. Vestibulum in nisi molestie, molestie erat vel, tincidunt nisl. Vestibulum dapibus sapien vel leo dictum feugiat. Maecenas eget est non ex vulputate congue. Suspendisse fringilla enim massa, vel fringilla nibh dapibus at. In hac habitasse platea dictumst. In hac habitasse platea dictumst. Sed consequat, erat ac vulputate pharetra, purus dui ultrices mauris, quis fermentum ex dui in orci.
-                  </p>
-                </div>
-              </div>
-
-              {/* Nuevas Preguntas Frecuentes sobre la Doctora */}
-              <div className="dr-diaz-right-column">
-                <details className="faq-item">
-                  <summary className="faq-question-summary">
-                    <p className="faq-question-text">¿Por qué eligió la medicina estética?</p>
-                    <div className="faq-arrow-icon">
-                      <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                    </div>
-                  </summary>
-                  <p className="faq-answer-text">Elegí la medicina estética porque me apasiona ayudar a las personas a sentirse más seguras y felices con su propia piel. Ver la transformación y el impacto positivo en la vida de mis pacientes es increíblemente gratificante.</p>
-                </details>
-
-                <details className="faq-item">
-                  <summary className="faq-question-summary">
-                    <p className="faq-question-text">¿Cuál es su tratamiento favorito y por qué?</p>
-                    <div className="faq-arrow-icon">
-                      <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                    </div>
-                  </summary>
-                  <p className="faq-answer-text">Me encanta el rejuvenecimiento facial con ácido hialurónico. Es un tratamiento versátil que permite restaurar volúmenes, suavizar arrugas y mejorar la calidad de la piel de forma natural, logrando resultados muy armoniosos.</p>
-                </details>
-
-                <details className="faq-item">
-                  <summary className="faq-question-summary">
-                    <p className="faq-question-text">¿Qué consejo le daría a alguien que está considerando un tratamiento estético?</p>
-                    <div className="faq-arrow-icon">
-                      <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                    </div>
-                  </summary>
-                  <p className="faq-answer-text">Mi principal consejo es investigar a fondo y elegir un profesional cualificado y con experiencia. Es fundamental tener una consulta honesta para discutir tus expectativas y entender los resultados realistas que se pueden lograr.</p>
-                </details>
-              </div>
             </div>
           </section>
 
@@ -190,7 +178,10 @@ export default function Inicio() {
               {services.map((service, index) => (
                 <Link to={`/servicios#${toSlug(service.name)}`} key={index} className="service-card-link">
                   <div className="service-card-image-container">
-                    <div className="service-card-image" style={{ backgroundImage: `url("${service.image}")` }}></div>
+                    {/* Comentario: Para añadir una imagen de fondo al servicio, descomenta la siguiente línea y reemplaza 'service.image' con la ruta de tu imagen. */}
+                    {/* <div className="service-card-image" style={{ backgroundImage: `url("${service.image}")` }}></div> */}
+                    {/* Comentario: Para añadir un icono al servicio, descomenta la siguiente línea y reemplaza 'service.icon' con la ruta de tu icono. */}
+                    {service.icon && <img src={service.icon} alt={service.name} className="service-icon" />}
                   </div>
                   <h3 className="service-card-title">{service.name}</h3>
                 </Link>
@@ -235,21 +226,28 @@ export default function Inicio() {
 
               <div className="faq-related-articles-column">
                 <h2 className="related-articles-title">Artículos Destacados</h2>
-                <Link to="/blog" className="related-article-card">
-                  <div className="related-article-image" style={{ backgroundImage: 'url("https://i0.wp.com/revistareplicante.com/wp-content/uploads/2011/06/dr-house-2.jpeg?fit=320%2C474&ssl=1")' }}></div>
-                  <div className="related-article-text-content">
-                    <p className="related-article-category">Artículo Destacado</p>
-                    <h3 className="related-article-title">Los Últimos Avances en Medicina Estética</h3>
-                  </div>
-                </Link>
+                {loadingArticles && <p>Cargando artículos...</p>}
+                {errorArticles && <p>Error al cargar los artículos: {errorArticles.message}</p>}
+                {!loadingArticles && latestArticles.length === 0 && <p>No se encontraron artículos.</p>}
+                {!loadingArticles && latestArticles.map((article) => {
+                  if (!article || !article.attributes) {
+                    console.warn("Skipping malformed article:", article);
+                    return null; // Skip this article if it's malformed
+                  }
+                  const imageUrl = article.attributes.image?.data?.attributes?.url
+                    ? `http://localhost:1337${article.attributes.image.data.attributes.url}`
+                    : '';
 
-                <Link to="/blog" className="related-article-card">
-                  <div className="related-article-image" style={{ backgroundImage: 'url("https://i0.wp.com/revistareplicante.com/wp-content/uploads/2011/06/dr-house-2.jpeg?fit=320%2C474&ssl=1")' }}></div>
-                  <div className="related-article-text-content">
-                    <p className="related-article-category">Producto Recomendado</p>
-                    <h3 className="related-article-title">Esenciales para el Cuidado de la Piel para una Tez Radiante</h3>
-                  </div>
-                </Link>
+                  return (
+                    <Link to={`/blog/${article.id}`} key={article.id} className="related-article-card">
+                      <div className="related-article-image" style={{ backgroundImage: `url("${imageUrl}")` }}></div>
+                      <div className="related-article-text-content">
+                        <p className="related-article-category">Artículo Destacado</p>
+                        <h3 className="related-article-title">{article.attributes.title}</h3>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </section>

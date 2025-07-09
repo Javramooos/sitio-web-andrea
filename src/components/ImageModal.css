@@ -1,0 +1,73 @@
+/* src/components/ImageModal.css */
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 70vw; /* Ajustado al 70% del ancho del viewport */
+  max-height: 70vh; /* Ajustado al 70% de la altura del viewport */
+  transform: scale(0.95);
+  animation: scaleIn 0.3s forwards;
+}
+
+.image-modal-close-button {
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.image-modal-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%; /* Asegura que la imagen se ajuste al 70% del modal */
+  border-radius: 8px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  to { transform: scale(1); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .image-modal-content {
+    max-width: 90vw; /* Ajuste para móviles */
+    max-height: 90vh; /* Ajuste para móviles */
+  }
+  .image-modal-close-button {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+}

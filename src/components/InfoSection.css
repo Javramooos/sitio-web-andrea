@@ -1,0 +1,91 @@
+/* src/components/InfoSection.css */
+
+.info-section {
+  padding: 5rem 2rem;
+  text-align: center;
+  background-color: #fff; /* O el color de fondo que prefieras */
+}
+
+.info-section-header {
+  max-width: 750px;
+  margin: 0 auto 3rem auto;
+}
+
+.info-section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.info-section-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.info-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilos para el sub-componente InfoCard */
+.info-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  text-align: center;
+  flex: 1;
+  max-width: 350px; /* Ancho máximo para cada tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.info-card-icon {
+  margin-bottom: 1.5rem;
+  color: #007bff; /* Color primario para los iconos */
+}
+
+.info-card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.info-card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #666;
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+  .info-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-card {
+    width: 100%;
+    max-width: 500px; /* Aumenta el ancho máximo en vista de tableta/móvil */
+  }
+}
+
+@media (max-width: 768px) {
+  .info-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .info-section-title {
+    font-size: 2rem;
+  }
+}

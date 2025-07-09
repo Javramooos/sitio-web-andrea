@@ -8,6 +8,7 @@ import Blog from './pages/Blog';
 import Servicios from './pages/Servicios';
 import PoliticaPrivacidad from './pages/PoliticaPrivacidad';
 import TerminosCondiciones from './pages/TerminosCondiciones';
+import ArticuloDetalle from './pages/ArticuloDetalle'; // Importamos el nuevo componente
 import UtilityButtons from './components/UtilityButtons';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<ArticuloDetalle />} /> {/* Nueva ruta */}
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
           <Route path="/terminos-condiciones" element={<TerminosCondiciones />} />

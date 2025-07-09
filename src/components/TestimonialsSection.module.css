@@ -1,0 +1,26 @@
+.testimonialsSection {
+  padding: 50px 20px;
+  background-color: #f8f8f8; /* Fondo claro para la sección */
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* Espacio entre las tarjetas */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .cardsContainer {
+    flex-direction: column; /* Apila las tarjetas verticalmente en móviles */
+    align-items: center;
+  }
+}
