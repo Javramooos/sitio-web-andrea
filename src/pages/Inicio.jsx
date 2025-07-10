@@ -11,33 +11,33 @@ const testimonials = [
     time: 'Hace 2 meses',
     image: 'https://i0.wp.com/www.venezuelaennotas.com/wp-content/uploads/La-Gaita-Zuliana-1.jpg?resize=800%2C520&ssl=1',
     text: '¡La Dra. Díaz es increíble! Se tomó el tiempo para entender mis objetivos y me recomendó el plan de tratamiento perfecto. Los resultados son naturales y me siento más segura que nunca.',
-    beforeImage: 'https://via.placeholder.com/150x150?text=Antes',
-    afterImage: 'https://via.placeholder.com/150x150?text=Despues',
+    beforeImage: '/assets/1.jpg',
+    afterImage: '/assets/2.jpg',
   },
   {
     name: 'Olivia Bennett',
     time: 'Hace 3 meses',
     image: 'https://randomuser.me/api/portraits/women/44.jpg',
     text: "He estado viendo a la Dra. Díaz durante años y siempre ofrece resultados excepcionales. Su experiencia y atención al detalle son inigualables.",
-    beforeImage: 'https://via.placeholder.com/150x150?text=Antes',
-    afterImage: 'https://via.placeholder.com/150x150?text=Despues',
+    beforeImage: '/assets/3.jpg',
+    afterImage: '/assets/4.jpg',
   },
   {
     name: 'Emma Carter',
     time: 'Hace 5 meses',
     text: "Recomiendo encarecidamente a la Dra. Díaz. Es profesional, atenta y realmente apasionada por su trabajo. Estoy encantada con el resultado de mi procedimiento.",
-    beforeImage: 'https://via.placeholder.com/150x150?text=Antes',
-    afterImage: 'https://via.placeholder.com/150x150?text=Despues',
+    beforeImage: '/assets/1.jpg',
+    afterImage: '/assets/3.jpg',
   },
 ];
 
 const services = [
-  { name: 'Rejuvenecimiento Facial', image: '/assets/poster_facial.jpg', icon: '/assets/icons/facial_icon.svg' },
-  { name: 'Contorno Corporal', image: '/assets/poster_corporal.jpg', icon: '/assets/icons/body_icon.svg' },
-  { name: 'Cuidado de la Piel', image: '/assets/poster_piel.jpg', icon: '/assets/icons/skin_icon.svg' },
-  { name: 'Anti-Envejecimiento', image: '/assets/poster_antiage.jpg', icon: '/assets/icons/antiage_icon.svg' },
-  { name: 'Restauración Capilar', image: '/assets/poster_capilar.jpg', icon: '/assets/icons/hair_icon.svg' },
-  { name: 'Bienestar', image: '/assets/poster_bienestar.jpg', icon: '/assets/icons/wellness_icon.svg' },
+  { name: 'Rejuvenecimiento Facial', image: '/assets/poster_facial.jpg' },
+  { name: 'Contorno Corporal', image: '/assets/poster_corporal.jpg' },
+  { name: 'Cuidado de la Piel', image: '/assets/poster_piel.jpg' },
+  { name: 'Anti-Envejecimiento', image: '/assets/poster_antiage.jpg' },
+  { name: 'Restauración Capilar', image: '/assets/poster_capilar.jpg' },
+  { name: 'Bienestar', image: '/assets/poster_bienestar.jpg' },
 ];
 
 
@@ -178,12 +178,9 @@ export default function Inicio() {
               {services.map((service, index) => (
                 <Link to={`/servicios#${toSlug(service.name)}`} key={index} className="service-card-link">
                   <div className="service-card-image-container">
-                    {/* Comentario: Para añadir una imagen de fondo al servicio, descomenta la siguiente línea y reemplaza 'service.image' con la ruta de tu imagen. */}
-                    {/* <div className="service-card-image" style={{ backgroundImage: `url("${service.image}")` }}></div> */}
-                    {/* Comentario: Para añadir un icono al servicio, descomenta la siguiente línea y reemplaza 'service.icon' con la ruta de tu icono. */}
-                    {service.icon && <img src={service.icon} alt={service.name} className="service-icon" />}
+                    <div className="service-card-image" style={{ backgroundImage: `url(${service.image})` }}></div>
+                    <h3 className="service-card-title">{service.name}</h3>
                   </div>
-                  <h3 className="service-card-title">{service.name}</h3>
                 </Link>
               ))}
             </div>

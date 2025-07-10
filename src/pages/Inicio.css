@@ -228,8 +228,8 @@
   aspect-ratio: 1 / 1; /* aspect-square */
   background-size: cover;
   border-radius: 9999px; /* rounded-full */
-  width: 3rem; /* size-12 */
-  height: 3rem; /* size-12 */
+  width: 4rem; /* size-16 */
+  height: 4rem; /* size-16 */
 }
 
 .testimonial-name {
@@ -264,6 +264,13 @@
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.before-image-container:hover,
+.after-image-container:hover {
+  transform: scale(1.5);
+  z-index: 10;
 }
 
 .before-image,
@@ -326,7 +333,6 @@
   background-color: white; /* Fondo blanco para la tarjeta */
   border-radius: 0.75rem; /* Bordes redondeados */
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Sombra sutil */
-  padding: 1.5rem; /* Espaciado interno */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para hover */
 }
 
@@ -340,25 +346,34 @@
 }
 
 .service-card-image-container {
+  position: relative;
   overflow: hidden;
+  width: 100%;
+  height: 400px; /* Set a fixed height to make cards smaller */
   border-radius: 0.75rem; /* rounded-xl */
-  display: flex; /* Added for centering icon */
-  justify-content: center; /* Added for centering icon */
-  align-items: center; /* Added for centering icon */
-  height: 100px; /* Example height for icon container */
+  background-color: #f0f0f0; /* Add a background color for letterboxing */
 }
 
-.service-icon {
-  width: 60px; /* Adjust icon size as needed */
-  height: 60px; /* Adjust icon size as needed */
-  object-fit: contain;
+.service-card-image {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; /* Show the whole image */
+  transition: transform 0.3s ease;
 }
 
 .service-card-title {
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 700; /* font-bold */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 1rem;
   text-align: center;
-  color: var(--text-primary); /* Asegurar el color del texto */
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 /* FAQ Section */
