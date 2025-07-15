@@ -4,6 +4,7 @@
   max-width: 1200px;
   margin: 2rem auto 6rem;
   padding: 0 1rem;
+  min-height: 80vh; /* Añadido para asegurar que el contenedor tenga altura */
 }
 
 .agenda-titulo-container {

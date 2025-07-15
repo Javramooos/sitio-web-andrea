@@ -1,94 +1,345 @@
-/* src/pages/ArticuloDetalle.css */
+/* Estilos para la página de detalle del artículo con un toque elegante y rosado */
+
+/* Usaremos variables para los colores principales para que sean fáciles de cambiar */
+:root {
+  --rosa-principal: #D9AAB7; /* Un rosa suave y elegante */
+  --rosa-oscuro: #A67B88;    /* Para hover y acentos */
+  --texto-principal: #333;
+  --texto-secundario: #6c757d;
+  --fondo-suave: #fdf9fa;
+}
 
 .detalle-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 2rem auto 6rem;
+  padding: 0 1rem;
+  background-color: #fff;
+}
+
+/* Barra superior con el enlace para volver */
+.detalle-top-bar {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.volver-link {
+  display: inline-block;
+  color: var(--rosa-oscuro);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--rosa-principal);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.volver-link:hover {
+  background-color: var(--rosa-principal);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Encabezado del artículo */
+.detalle-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.detalle-header .categoria-tag {
+  display: inline-block;
+  background-color: var(--rosa-principal);
+  color: white;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.detalle-header h1 {
+  font-size: 3.2rem;
+  font-family: 'Playfair Display', serif; /* Una fuente elegante para títulos */
+  color: var(--texto-principal);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Imagen de portada */
+.detalle-imagen-portada {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Contenido del artículo */
+.detalle-contenido {
+  font-size: 1.1rem; 
+  line-height: 1.75; 
+  color: var(--texto-principal);
+  font-family: 'Roboto', sans-serif; 
+  text-align: left; /* Alineación a la izquierda */
+  padding: 0 1rem; /* Añadir padding horizontal para el contenido */
+}
+
+.detalle-contenido h2, .detalle-contenido h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--rosa-oscuro);
+  margin-top: 2.5rem; /* Espacio antes de los títulos */
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.detalle-contenido h2 { 
+  font-size: 2rem; 
+  font-weight: 700;
+}
+.detalle-contenido h3 { 
+  font-size: 1.6rem; 
+  font-weight: 600;
+}
+
+.detalle-contenido p {
+  margin-bottom: 1rem; /* Espaciado consistente entre párrafos */
+}
+
+.detalle-contenido a {
+  color: var(--rosa-oscuro);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--rosa-principal);
+  transition: background-color 0.3s ease;
+}
+
+.detalle-contenido a:hover {
+  background-color: #fceef3;
+}
+
+/* Estilos para listas */
+.detalle-contenido ul {
+  list-style: none; 
+  padding-left: 0;
+  margin-bottom: 1.2rem;
+}
+
+.detalle-contenido ul li {
+  position: relative;
+  padding-left: 1.5rem; 
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.detalle-contenido ul li::before {
+  content: '•'; 
+  position: absolute;
+  left: 0;
+  color: var(--rosa-principal); 
+  font-size: 1.1rem;
+  top: 0;
+}
+
+/* Estilos para blockquotes */
+.detalle-contenido blockquote {
+  border-left: 5px solid var(--rosa-principal); 
+  padding: 1.2rem 1.5rem; 
+  margin: 2rem 0; 
+  font-style: italic;
+  color: #555;
+  background-color: var(--fondo-suave);
+  border-radius: 0 10px 10px 0; 
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.05); 
+}
+
+.detalle-contenido blockquote p {
+  margin-bottom: 0; 
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+  .detalle-header h1 { font-size: 2.5rem; }
+  .detalle-container { padding: 0 1.5rem; margin: 1rem auto 4rem; }
+}
+
+/* Animación de entrada */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos para el botón de compra de Amazon con estilo de la página */
+.amazon-link-container {
+  text-align: center;
+  margin-top: 2.5rem; /* Reducido */
+  padding-top: 1.5rem; /* Reducido */
+  border-top: 1px solid #fde9f0; /* Un borde rosado muy suave */
+}
+
+.amazon-buy-button {
+  display: inline-block;
+  background-color: var(--rosa-principal);
+  color: white;
+  padding: 0.9rem 2.8rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px -5px rgba(217, 170, 183, 0.8);
+}
+
+.amazon-buy-button:hover {
+  background-color: var(--rosa-oscuro);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px -8px rgba(166, 123, 136, 1);
+}
+
+/* --- Sección de Compartir en Redes Sociales --- */
+.social-share-container {
+  text-align: center;
+  margin-top: 2.5rem; /* Reducido */
+  padding-top: 1.5rem; /* Reducido */
+  border-top: 1px solid #fde9f0; /* Separador sutil */
+}
+
+.social-share-container h4 {
+  font-size: 1.2rem;
+  color: var(--texto-principal);
+  margin-bottom: 1.2rem; /* Reducido */
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem; /* Reducido */
+  flex-wrap: wrap;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem; /* Reducido */
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-button.facebook {
+  background-color: #3b5998;
+}
+
+.social-button.facebook:hover {
+  background-color: #2d4373;
+  transform: translateY(-2px);
+}
+
+.social-button.twitter {
+  background-color: #00acee;
+}
+
+.social-button.twitter:hover {
+  background-color: #0084b4;
+  transform: translateY(-2px);
+}
+
+.social-button.linkedin {
+  background-color: #0077b5;
+}
+
+.social-button.linkedin:hover {
+  background-color: #005582;
+  transform: translateY(-2px);
+}
+
+.social-button.whatsapp {
+  background-color: #25d366;
+}
+
+.social-button.whatsapp:hover {
+  background-color: #1da851;
+  transform: translateY(-2px);
+}
+
+/* --- Sección de Artículos Relacionados --- */
+.articulos-relacionados-container {
+  margin-top: 2.5rem; /* Reducido */
+  padding-top: 1.5rem; /* Reducido */
+  border-top: 1px solid #fde9f0; /* Separador sutil */
+}
+
+.articulos-relacionados-container h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; /* Reducido */
+  text-align: center;
+  margin-bottom: 2rem; /* Reducido */
+  color: var(--texto-principal);
+}
+
+.relacionados-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; /* Reducido */
+}
+
+.relacionado-card {
+  display: block;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  transition: all 0.3s ease;
+}
+
+.relacionado-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.relacionado-card img {
+  width: 100%;
+  height: 160px; /* Reducido */
+  object-fit: cover;
+}
+
+.relacionado-card-content {
+  padding: 1.2rem; /* Reducido */
+}
+
+.categoria-tag-relacionado {
+  display: inline-block;
+  background-color: var(--rosa-principal);
+  color: white;
+  padding: 0.2rem 0.7rem; /* Reducido */
+  border-radius: 15px;
+  font-size: 0.75rem; /* Reducido */
+  font-weight: bold;
+  margin-bottom: 0.8rem; /* Reducido */
+}
+
+.relacionado-card-content h4 {
+  font-size: 1.1rem; /* Reducido */
+  color: var(--texto-principal);
+  margin: 0;
+  line-height: 1.3;
+}
+
+@media (max-width: 600px) {
+  .relacionados-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .detalle-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 2rem;
-  }
-  
-  .volver-link {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .volver-link:hover {
-    text-decoration: underline;
-  }
-  
-  .detalle-header .categoria-tag {
-    margin-bottom: 1rem;
-  }
-  
-  .detalle-header h1 {
-    font-size: 2.8rem;
-    margin: 0.5rem 0;
-    line-height: 1.2;
-  }
-  
-  .fecha-publicacion {
-    color: #666;
-    font-size: 0.9rem;
-  }
-  
-  .detalle-imagen-portada {
-    width: 100%;
-    height: auto;
-    max-height: 450px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-  }
-  
-  .detalle-contenido {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #333;
-  }
-  
-  /* Estilos para el contenido que viene de Strapi (ej. de un editor de texto enriquecido) */
-  .detalle-contenido h2 {
-    font-size: 2rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .detalle-contenido p {
-    margin-bottom: 1.5rem;
-  }
-  
-  .detalle-contenido a {
-    color: #007bff;
-    text-decoration: underline;
-  }
-  
-  .detalle-contenido blockquote {
-    border-left: 4px solid #007bff;
-    padding-left: 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: #555;
-  }
-  
-  /* Animación de entrada */
-  .fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+}
   

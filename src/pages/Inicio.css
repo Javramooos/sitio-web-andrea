@@ -376,6 +376,13 @@
   font-weight: 700;
 }
 
+.service-card-link:hover .service-card-title {
+  background-color: rgba(0, 0, 0, 0.7); /* Vuelve al color original o similar */
+}
+
+/* Eliminar estilos del icono */
+/* .service-card-icon { ... } */
+
 /* FAQ Section */
 .faq-section {
   padding-top: 4rem; /* py-16 */
@@ -440,7 +447,22 @@
   justify-content: space-between;
   gap: 1.5rem; /* gap-6 */
   list-style: none;
+  position: relative; /* Para posicionar el icono */
+  padding-left: 2.5rem; /* Espacio para el nuevo icono */
 }
+
+.faq-question-summary::before {
+  content: '❔'; /* Icono de pregunta por defecto */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--rosa-principal);
+}
+
+.faq-item:nth-child(2) .faq-question-summary::before { content: '🌿'; }
+.faq-item:nth-child(3) .faq-question-summary::before { content: '📅'; }
 
 .faq-question-text {
   color: var(--text-primary);

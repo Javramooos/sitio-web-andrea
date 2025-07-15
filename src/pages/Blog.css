@@ -62,36 +62,110 @@
 .blog-content-wrapper { display: grid; grid-template-columns: 2.5fr 1fr; gap: 3rem; }
 .blog-main-content h3 { font-size: 2rem; margin-top: 0; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
 
-/* === ESTILOS RESTAURADOS PARA LAS TARJETAS DE ARTÍCULO === */
+/* === ESTILOS MEJORADOS PARA LAS TARJETAS DE ARTÍCULO === */
 .articulo-card {
   display: flex;
   gap: 1.5rem;
   text-decoration: none;
   color: var(--texto);
   margin-top: 2.5rem;
-  transition: background-color 0.3s ease;
-  border-radius: 12px;
-  padding: 1rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0; /* El padding se manejará en los elementos internos */
 }
-.articulo-card:hover { background-color: #f9f9f9; }
+.articulo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
 .articulo-card .card-imagen {
-  width: 250px;
+  width: 280px;
   flex-shrink: 0;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
 }
-.articulo-card .card-imagen img { width: 100%; height: 100%; object-fit: cover; }
-.card-texto h4 { font-size: 1.3rem; margin: 0.5rem 0 0.8rem; }
-.card-texto p { font-size: 0.95rem; color: var(--texto-secundario); line-height: 1.6; }
-.leer-mas { margin-top: 1rem; color: var(--principal); font-weight: bold; }
+.articulo-card .card-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.articulo-card:hover .card-imagen img { transform: scale(1.05); }
 
-/* --- Barra Lateral --- */
+.card-texto {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-texto h4 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0 0.8rem;
+  font-weight: 700;
+}
+.card-texto p {
+  font-size: 1rem;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.leer-mas {
+  margin-top: 1rem;
+  color: var(--principal);
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+.leer-mas:hover { color: var(--principal-hover); }
+
+/* --- Barra Lateral y Categorías --- */
 .blog-sidebar { position: sticky; top: 120px; height: fit-content; }
-.blog-sidebar h4 { margin-top: 0; font-size: 1.2rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eee; }
+.blog-sidebar h4 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--principal);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+/* === ESTILOS MEJORADOS PARA CATEGORÍAS (VERTICAL) === */
+.blog-sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Cambiado a columna */
+  gap: 0.8rem;
+}
+
+.blog-sidebar ul li a {
+  display: block;
+  text-decoration: none;
+  background-color: #f7f7f7;
+  color: var(--texto);
+  padding: 1rem 1.5rem; /* Aumentado el padding */
+  border-radius: 8px;
+  font-size: 1.1rem; /* Aumentado el tamaño de fuente */
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.blog-sidebar ul li a:hover {
+  background-color: #eaf5ff;
+  color: var(--principal-hover);
+  transform: translateX(5px);
+  border-left: 3px solid var(--principal);
+}
+
 .sidebar-card {
   display: block; background: var(--principal); color: white;
   padding: 1.5rem; border-radius: 12px; text-decoration: none;
-  font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem;
+  font-size: 1.1rem; font-weight: bold; margin-top: 2rem; /* Añadido margen superior */
   transition: all 0.3s ease; text-align: center;
 }
 .sidebar-card:hover {
@@ -104,10 +178,23 @@
   .blog-content-wrapper { grid-template-columns: 1fr; }
   .blog-sidebar { position: static; margin-top: 3rem; }
 }
+
+@media (max-width: 768px) {
+  .destacado-overlay h2 { font-size: 2rem; }
+  .destacado-overlay p { font-size: 1rem; }
+  .articulo-card {
+    flex-direction: column;
+  }
+  .articulo-card .card-imagen {
+    width: 100%;
+    height: 220px; /* Altura fija para la imagen en móvil */
+  }
+}
+
 @media (max-width: 600px) {
-  .featured-articles-swiper { height: 380px; }
-  .destacado-overlay h2 { font-size: 1.8rem; }
+  .blog-page-container { margin: 1rem auto 4rem; }
+  .featured-articles-swiper { height: 380px; margin-bottom: 2rem; }
   .destacado-overlay { padding: 1.5rem; }
-  .articulo-card { flex-direction: column; }
-  .articulo-card .card-imagen { width: 100%; height: 200px; }
+  .destacado-overlay h2 { font-size: 1.8rem; }
+  .blog-main-content h3 { font-size: 1.8rem; }
 }

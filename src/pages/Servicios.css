@@ -52,7 +52,29 @@
   border-color: var(--principal); box-shadow: 0 8px 25px rgba(209, 179, 189, 0.4);
 }
 .menu-item.active h2, .menu-item.active p { color: #fff; }
-.menu-item-icono { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+
+/* Nuevos estilos para el icono */
+.menu-item-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--principal-light); /* Un color de fondo suave para el icono */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.menu-item-icon {
+  font-size: 1.5rem; /* Tamaño del icono */
+  color: var(--principal); /* Color del icono */
+  transition: color 0.3s ease;
+}
+
+.menu-item.active .menu-item-icon {
+  color: white; /* Icono blanco cuando la tarjeta está activa */
+}
+
 .menu-item-texto h2 { font-size: 1.1rem; margin: 0 0 0.25rem 0; font-weight: 500; }
 .menu-item-texto p { font-size: 0.9rem; color: var(--texto-secundario); margin: 0; line-height: 1.4; transition: color 0.3s ease; }
 

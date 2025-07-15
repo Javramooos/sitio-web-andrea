@@ -87,7 +87,9 @@ export default function Servicios() {
             {serviciosFiltrados.map((servicio) => (
               <SwiperSlide key={servicio.id}>
                 <div className={`menu-item ${servicio.id === servicioActivo?.id ? 'active' : ''}`} onClick={() => handleSelectServicio(servicio)}>
-                  <img src={servicio.icono || servicio.imagen} alt="" className="menu-item-icono" />
+                  <div className="menu-item-icon-wrapper">
+                    <span className="menu-item-icon">{servicio.icon}</span>
+                  </div>
                   <div className="menu-item-texto">
                     <h2>{servicio.titulo}</h2>
                     <p>{servicio.descripcionCorta}</p>

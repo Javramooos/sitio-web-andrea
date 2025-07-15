@@ -1,85 +1,129 @@
 // src/pages/ArticuloDetalle.jsx
 
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { blogData } from '../blogData'; // Importamos los datos estáticos
 import './ArticuloDetalle.css';
 
 export default function ArticuloDetalle() {
   const [articulo, setArticulo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { slug } = useParams(); // Obtiene el 'slug' de la URL
+  const [articulosRelacionados, setArticulosRelacionados] = useState([]);
+  const { slug } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchArticulo = async () => {
-      const strapiUrl = import.meta.env.VITE_STRAPI_API_URL || 'http://localhost:1337';
-      // Filtramos por el slug para obtener el artículo correcto
-      const apiUrl = `${strapiUrl}/api/articulos?filters[slug][$eq]=${slug}&populate=*`;
+    const articuloEncontrado = blogData.find(a => a.slug === slug);
 
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error('La respuesta de la red no fue exitosa');
-        }
-        const data = await response.json();
+    if (articuloEncontrado) {
+      const formattedArticle = {
+        ...articuloEncontrado,
+        titulo: articuloEncontrado.title,
+        contenido: articuloEncontrado.content,
+        imagen: articuloEncontrado.imageUrl,
+        categoria: articuloEncontrado.category,
+        amazonLink: articuloEncontrado.amazonLink, 
+        fecha: new Date().toLocaleDateString('es-ES', { 
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
+        tiempoLectura: Math.ceil(articuloEncontrado.content.split(' ').length / 200), // 200 palabras por minuto
+      };
+      setArticulo(formattedArticle);
 
-        if (data.data && data.data.length > 0) {
-          const item = data.data[0];
-          // Formateamos los datos para un uso más fácil
-          const formattedArticle = {
-            id: item.id,
-            titulo: item.attributes.titulo,
-            contenido: item.attributes.contenido, // Asumimos que el contenido viene de un campo 'contenido'
-            imagen: item.attributes.imagen_portada && item.attributes.imagen_portada.data ? `${strapiUrl}${item.attributes.imagen_portada.data.attributes.url}` : '',
-            fecha: new Date(item.attributes.publishedAt).toLocaleDateString('es-ES', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            }),
-            categoria: item.attributes.categoria,
-          };
-          setArticulo(formattedArticle);
-        } else {
-          throw new Error('Artículo no encontrado');
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+      // --- SEO Dinámico ---
+      // 1. Actualizar el título de la página
+      document.title = `${formattedArticle.titulo} - Blog de Andrea Díaz`;
+
+      // 2. Actualizar la meta descripción
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', formattedArticle.summary);
+      } else {
+        const newMeta = document.createElement('meta');
+        newMeta.name = "description";
+        newMeta.content = formattedArticle.summary;
+        document.head.appendChild(newMeta);
       }
-    };
 
-    fetchArticulo();
-  }, [slug]); // El efecto se ejecuta de nuevo si el slug cambia
+      // Lógica para encontrar artículos relacionados
+      const relacionados = blogData.filter(
+        (a) => a.category === formattedArticle.categoria && a.id !== formattedArticle.id
+      ).slice(0, 2); // Tomamos hasta 2 artículos relacionados
+      setArticulosRelacionados(relacionados);
 
-  if (loading) {
-    return <div className="detalle-container fade-in"><p>Cargando artículo...</p></div>;
-  }
-
-  if (error) {
-    return <div className="detalle-container fade-in"><p>Error: {error}</p></div>;
-  }
+    } else {
+      console.error("Artículo no encontrado");
+    }
+  }, [slug, navigate]);
 
   if (!articulo) {
-    return null; // O un mensaje de "Artículo no encontrado"
+    return <div className="detalle-container fade-in"><p>Artículo no encontrado.</p></div>;
   }
 
   return (
     <div className="detalle-container fade-in">
-      <header className="detalle-header">
+      <div className="detalle-top-bar">
         <Link to="/blog" className="volver-link">← Volver al blog</Link>
+      </div>
+      <header className="detalle-header">
         <span className="categoria-tag">{articulo.categoria}</span>
         <h1>{articulo.titulo}</h1>
-        <p className="fecha-publicacion">Publicado el {articulo.fecha}</p>
+        <p className="tiempo-lectura">Tiempo de lectura: {articulo.tiempoLectura} min</p>
       </header>
       
       <img src={articulo.imagen} alt={articulo.titulo} className="detalle-imagen-portada" />
       
-      {/* Aquí renderizamos el contenido del artículo */}
       <div 
         className="detalle-contenido" 
-        dangerouslySetInnerHTML={{ __html: articulo.contenido }} // Ojo: Usar con precaución si el HTML no es de confianza
+        dangerouslySetInnerHTML={{ __html: articulo.contenido }}
       />
+
+      {/* Botón de compra de Amazon */}
+      {articulo.amazonLink && (
+        <div className="amazon-link-container">
+          <a href={articulo.amazonLink} target="_blank" rel="noopener noreferrer" className="amazon-buy-button">
+            Comprar en Amazon
+          </a>
+        </div>
+      )}
+
+      {/* Sección de Compartir en Redes Sociales */}
+      <div className="social-share-container">
+        <h4>Comparte este artículo:</h4>
+        <div className="social-buttons">
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer" className="social-button facebook">
+            Facebook
+          </a>
+          <a href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${encodeURIComponent(articulo.titulo)}`} target="_blank" rel="noopener noreferrer" className="social-button twitter">
+            Twitter
+          </a>
+          <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${encodeURIComponent(articulo.titulo)}`} target="_blank" rel="noopener noreferrer" className="social-button linkedin">
+            LinkedIn
+          </a>
+          <a href={`whatsapp://send?text=${encodeURIComponent(articulo.titulo + " " + window.location.href)}`} target="_blank" rel="noopener noreferrer" className="social-button whatsapp">
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      {/* Sección de Artículos Relacionados */}
+      {articulosRelacionados.length > 0 && (
+        <div className="articulos-relacionados-container">
+          <h3>También te puede interesar</h3>
+          <div className="relacionados-grid">
+            {articulosRelacionados.map(relacionado => (
+              <Link to={`/blog/${relacionado.slug}`} key={relacionado.id} className="relacionado-card">
+                <img src={relacionado.imageUrl} alt={relacionado.title} />
+                <div className="relacionado-card-content">
+                  <span className="categoria-tag-relacionado">{relacionado.category}</span>
+                  <h4>{relacionado.title}</h4>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

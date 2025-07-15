@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react'; // Importa useState y useEffect
-import './Inicio.css'; // Asegúrate de que la importación del CSS sigue aquí
-import DrDiazSection from '../components/DrDiazSection'; // Importa el nuevo componente
-import InfoSection from '../components/InfoSection'; // Importa el nuevo componente InfoSection
+import React from 'react';
+import './Inicio.css';
+import DrDiazSection from '../components/DrDiazSection';
+import InfoSection from '../components/InfoSection';
+import { blogData } from '../blogData'; // Importamos los datos del blog
 
 // --- Datos para las secciones ---
 const testimonials = [
@@ -40,34 +41,11 @@ const services = [
   { name: 'Bienestar', image: '/assets/poster_bienestar.jpg' },
 ];
 
-
-
 export default function Inicio() {
-  const [latestArticles, setLatestArticles] = useState([]);
-  const [loadingArticles, setLoadingArticles] = useState(true);
-  const [errorArticles, setErrorArticles] = useState(null);
-
-  useEffect(() => {
-    const fetchLatestArticles = async () => {
-      try {
-        // Asume que tu backend Strapi está corriendo en http://localhost:1337
-        // y que el endpoint para artículos es /api/articulos
-        const response = await fetch('http://localhost:1337/api/articulos?sort=createdAt:desc&pagination[limit]=2');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setLatestArticles(data.data);
-      } catch (error) {
-        console.error("Error fetching latest articles:", error);
-        setErrorArticles(error);
-      } finally {
-        setLoadingArticles(false);
-      }
-    };
-
-    fetchLatestArticles();
-  }, []);
+  // Seleccionamos los artículos directamente de los datos estáticos
+  const articuloSalud = blogData.find(p => p.category === 'Salud');
+  const articuloProducto = blogData.find(p => p.category === 'Productos');
+  const featuredArticles = [articuloSalud, articuloProducto].filter(Boolean); // Filtramos por si alguna categoría no tiene artículos
 
   const toSlug = (str) => {
     return str.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
@@ -222,29 +200,20 @@ export default function Inicio() {
               </div>
 
               <div className="faq-related-articles-column">
-                <h2 className="related-articles-title">Artículos Destacados</h2>
-                {loadingArticles && <p>Cargando artículos...</p>}
-                {errorArticles && <p>Error al cargar los artículos: {errorArticles.message}</p>}
-                {!loadingArticles && latestArticles.length === 0 && <p>No se encontraron artículos.</p>}
-                {!loadingArticles && latestArticles.map((article) => {
-                  if (!article || !article.attributes) {
-                    console.warn("Skipping malformed article:", article);
-                    return null; // Skip this article if it's malformed
-                  }
-                  const imageUrl = article.attributes.image?.data?.attributes?.url
-                    ? `http://localhost:1337${article.attributes.image.data.attributes.url}`
-                    : '';
-
-                  return (
-                    <Link to={`/blog/${article.id}`} key={article.id} className="related-article-card">
-                      <div className="related-article-image" style={{ backgroundImage: `url("${imageUrl}")` }}></div>
+                <h2 className="related-articles-title">Desde Nuestro Blog</h2>
+                {featuredArticles.length === 0 ? (
+                  <p>No se encontraron artículos destacados.</p>
+                ) : (
+                  featuredArticles.map((article) => (
+                    <Link to={`/blog/${article.slug}`} key={article.id} className="related-article-card">
+                      <div className="related-article-image" style={{ backgroundImage: `url(${article.imageUrl})` }}></div>
                       <div className="related-article-text-content">
-                        <p className="related-article-category">Artículo Destacado</p>
-                        <h3 className="related-article-title">{article.attributes.title}</h3>
+                        <p className="related-article-category">{article.category}</p>
+                        <h3 className="related-article-title">{article.title}</h3>
                       </div>
                     </Link>
-                  );
-                })}
+                  ))
+                )}
               </div>
             </div>
           </section>

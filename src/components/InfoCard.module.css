@@ -1,7 +1,7 @@
 .card {
-  background-color: white;
+  background-color: #ffffff; /* Fondo blanco para que resalte */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Sombra más pronunciada */
   padding: 20px;
   text-align: center;
   display: flex;
@@ -10,12 +10,18 @@
   justify-content: center;
   flex: 1;
   min-width: 280px; /* Para asegurar que las tarjetas no se hagan demasiado pequeñas */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .iconContainer {
   margin-bottom: 15px;
   font-size: 48px; /* Ajusta el tamaño del icono */
-  color: #007bff; /* Color de ejemplo para el icono */
+  color: var(--rosa-principal); /* Color rosado elegante para el icono */
 }
 
 .title {
