@@ -20,7 +20,7 @@ export default function WhatsappButton() {
   return (
     visible && (
       <a
-        href="https://wa.me/573001234567" // Reemplaza con el número real
+        href="https://wa.me/573143712078" // Reemplaza con el número real
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-button"

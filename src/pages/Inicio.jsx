@@ -3,7 +3,7 @@ import React from 'react';
 import './Inicio.css';
 import DrDiazSection from '../components/DrDiazSection';
 import InfoSection from '../components/InfoSection';
-import { blogData } from '../blogData'; // Importamos los datos del blog
+import { articles } from '../articuloData'; // Importamos los datos del blog
 
 // --- Datos para las secciones ---
 const testimonials = [
@@ -26,6 +26,7 @@ const testimonials = [
   {
     name: 'Emma Carter',
     time: 'Hace 5 meses',
+    image: 'https://randomuser.me/api/portraits/women/44.jpg',
     text: "Recomiendo encarecidamente a la Dra. Díaz. Es profesional, atenta y realmente apasionada por su trabajo. Estoy encantada con el resultado de mi procedimiento.",
     beforeImage: '/assets/1.jpg',
     afterImage: '/assets/3.jpg',
@@ -43,8 +44,8 @@ const services = [
 
 export default function Inicio() {
   // Seleccionamos los artículos directamente de los datos estáticos
-  const articuloSalud = blogData.find(p => p.category === 'Salud');
-  const articuloProducto = blogData.find(p => p.category === 'Productos');
+  const articuloSalud = articles.find(p => p.category === 'Salud');
+  const articuloProducto = articles.find(p => p.category === 'Productos');
   const featuredArticles = [articuloSalud, articuloProducto].filter(Boolean); // Filtramos por si alguna categoría no tiene artículos
 
   const toSlug = (str) => {

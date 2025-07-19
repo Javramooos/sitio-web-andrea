@@ -5,7 +5,7 @@ const ImageTextSection = ({ image, title, text }) => {
   return (
     <section className={styles.imageTextSection}>
       <div className={styles.imageContainer}>
-        <img src={image} alt={title} className={styles.image} />
+        <img src={image} alt={title} className={styles.image} loading="lazy" decoding="async" />
       </div>
       <div className={styles.textContainer}>
         <h2 className={styles.title}>{title}</h2>

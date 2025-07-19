@@ -14,17 +14,11 @@ html, body, #root {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--fondo);/* --- Arreglo para el espacio en blanco sobre el video --- */
-
-.bienvenida h1 {
-  font-size: 2.5rem;
-  color: white;
-  z-index: 1;
-  margin: 0; /* <-- ESTA LÍNEA ES EL CAMBIO CLAVE QUE ELIMINA EL ESPACIO */
-}
+  background-color: var(--fondo);
   color: var(--texto);
   font-family: 'Avenir', system-ui, Helvetica, Arial, sans-serif;
   box-sizing: border-box;
+  text-align: left; /* Asegurar alineación a la izquierda por defecto */
 }
 a, button, input, textarea, select {
   -webkit-tap-highlight-color: transparent;

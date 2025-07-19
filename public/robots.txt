@@ -1,0 +1,6 @@
+# Allow all crawlers
+User-agent: *
+Disallow:
+
+# Point to the sitemap
+Sitemap: https://wondrous-lokum-f7de0b.netlify.app/sitemap.xml

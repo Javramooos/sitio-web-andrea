@@ -1,0 +1,14 @@
+feat: Migrate blog to static content and enhance UI/UX
+
+- Migrated blog functionality from Strapi API to static data (src/blogData.js).
+- Redesigned blog list and article detail pages for improved aesthetics and SEO.
+- Implemented dynamic metadata for blog articles.
+- Enhanced UI/UX across various sections:
+  - Updated styling for blog article cards and categories.
+  - Adjusted home page service cards and FAQ section styling.
+  - Refined article content presentation (typography, spacing, lists, blockquotes).
+  - Added estimated reading time and social sharing buttons to articles.
+  - Reordered Amazon purchase button placement in articles.
+- Fixed initial content loading issue on 'Agenda' page.
+- Reverted unintended style changes on 'Trusted by Patients' section.
+- Removed icons from home page service cards as requested.

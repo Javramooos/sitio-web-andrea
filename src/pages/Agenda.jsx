@@ -52,7 +52,7 @@ export default function Agenda() {
                   `*Observaciones:* ${observaciones || 'Ninguna'}`;
 
     // 4. Tu número de WhatsApp (con código de país, sin el '+')
-    const tuNumero = '573195296092'; // <-- ¡IMPORTANTE! Reemplaza con tu número real
+    const tuNumero = '573143712078'; // <-- ¡IMPORTANTE! Reemplaza con tu número real
 
     // 5. Creamos la URL final y abrimos en una nueva pestaña
     const urlWhatsApp = `https://wa.me/${tuNumero}?text=${mensaje}`;

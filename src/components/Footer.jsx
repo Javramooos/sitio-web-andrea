@@ -26,30 +26,30 @@ export default function Footer() {
           dra.andrea.diazm@gmail.com
         </a>
         {/* ENLACE DE TELÉFONO AÑADIDO */}
-        <a href="tel:+573001234567">
+        <a href="tel:+573143712078">
           <FontAwesomeIcon icon={faPhone} />
-          (+57) 300 123 4567
+          (+57) 314-371-2078
         </a>
       </div>
       
       {/* Elemento 3: Redes Sociales (sin cambios, recuerda actualizar los links) */}
       <div className="footer-social">
-        <a href="https://www.instagram.com/tu_cuenta" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <a href="https://www.instagram.com/dra.andreadm" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <FontAwesomeIcon icon={faInstagram} />
         </a>
-        <a href="https://www.facebook.com/tu_cuenta" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <a href="https://www.facebook.com/share/176LjUnJeu/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <FontAwesomeIcon icon={faFacebook} />
         </a>
-        <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <a href="https://wa.me/573143712078" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
           <FontAwesomeIcon icon={faWhatsapp} />
         </a>
-        <a href="https://www.tiktok.com/@tu_cuenta" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <a href="https://www.tiktok.com/@dra.andreadiaz" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
           <FontAwesomeIcon icon={faTiktok} />
         </a>
       </div>
 
-      {/* --- CAMBIOS AQUÍ --- */}
-      {/* 3. Añadimos los enlaces legales debajo del copyright para mantenerlo limpio. */}
+    
+      {/*  enlaces legales debajo del copyright para mantenerlo limpio. */}
       <div className="footer-copy">
         <p>© 2025 Andrea. Todos los derechos reservados.</p>
         <div className="footer-legal-links">
@@ -62,21 +62,3 @@ export default function Footer() {
   );
 }
 
-// Opcional: Para mejorar el espaciado de los links legales, 
-// puedes añadir este pequeño bloque de CSS al final de tu archivo Footer.css
-
-/*
-.footer-legal-links {
-  margin-top: 0.5rem;
-}
-
-.footer-legal-links a {
-  color: var(--texto-secundario);
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-.footer-legal-links a:hover {
-  text-decoration: underline;
-}
-*/

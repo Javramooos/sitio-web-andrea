@@ -173,6 +173,51 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+/* --- Paginación --- */
+.pagination-container {
+  display: flex;
+  justify-content: flex-end; /* Alinea los elementos al final (derecha) */
+  margin-top: 3rem;
+  gap: 10px;
+  flex-wrap: wrap;
+  background-color: #f9f9f9; /* Fondo para el contenedor de paginación */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-left: auto; /* Asegura que el contenedor se empuje a la derecha */
+  margin-right: 0; /* Elimina el margen derecho si existiera */
+}
+
+.pagination-button {
+  background-color: #ffffff; /* Fondo blanco para los botones */
+  color: #555; /* Color de texto más oscuro */
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  min-width: 40px; /* Asegura un ancho mínimo para los números */
+  text-align: center;
+  font-weight: bold;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+  color: #000;
+  border-color: #bbb;
+}
+
+.pagination-button.active {
+  background-color: var(--principal);
+  color: white;
+  border-color: var(--principal);
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* --- Responsividad para el Blog --- */
 @media (max-width: 900px) {
   .blog-content-wrapper { grid-template-columns: 1fr; }

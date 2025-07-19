@@ -1,0 +1,103 @@
+
+.reviewArticle {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb ol {
+  list-style: none;
+  padding: 0; 
+  margin: 0 0 10px -40px; /* Aumentado el margen negativo para mover más a la izquierda */
+}
+
+.breadcrumb li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.breadcrumb a {
+  background-color: white; /* Fondo blanco */
+  color: #880e4f; /* Texto rosa oscuro */
+  padding: 10px 15px; /* Más padding para parecer botón */
+  border-radius: 8px; /* Bordes menos redondeados */
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  font-size: 0.9em;
+  border: 1px solid #f8c8dc; /* Borde rosa elegante */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra para profundidad */
+  display: flex; /* Para alinear el texto y la flecha */
+  align-items: center;
+  gap: 5px; /* Espacio entre flecha y texto */
+}
+
+.breadcrumb a:hover {
+  background-color: #f8c8dc; /* Rosa elegante al pasar el ratón */
+  color: #50052b; /* Texto aún más oscuro */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra más pronunciada */
+  border-color: #e7a9c8; /* Borde rosa un poco más oscuro */
+}
+
+/* Flecha para el primer elemento (Blog) */
+.breadcrumb li:first-child a::before {
+  content: '←';
+  font-weight: bold;
+}
+
+/* Eliminar el separador '>' entre los botones */
+.breadcrumb li:not(:last-child)::after {
+  content: ''; /* Eliminar el contenido del separador */
+  margin: 0;
+}
+
+.header h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.meta {
+  color: #888;
+  font-size: 0.9em;
+}
+
+.mainImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.introduction {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.mainContent h2 {
+  font-size: 2em;
+  margin-top: 40px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.mainContent h3 {
+  font-size: 1.5em;
+  margin-top: 30px;
+}
+
+.mainContent p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.mainContent ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}

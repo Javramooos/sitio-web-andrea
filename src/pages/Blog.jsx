@@ -1,32 +1,71 @@
-// src/pages/Blog.jsx
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { blogData } from '../blogData'; // Importamos los datos estáticos
+import React, { useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { articles } from '../articuloData';
 import './Blog.css';
 
-// Mantenemos las importaciones de Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-export default function Blog() {
-  // Usamos directamente los datos importados
-  const articulos = blogData.map(articulo => ({
-    ...articulo,
-    // Renombramos las claves para que coincidan con el JSX existente si es necesario
-    titulo: articulo.title,
-    resumen: articulo.summary,
-    imagen: articulo.imageUrl,
-    categoria: articulo.category
-  }));
+const ArticleCard = ({ article }) => (
+  <Link to={`/blog/${article.slug}`} key={article.id} className="articulo-card">
+    <div className="card-imagen">
+      <img src={article.imageUrl} alt={article.title} loading="lazy" decoding="async" />
+    </div>
+    <div className="card-texto">
+      <span className="categoria-tag">{article.category}</span>
+      <h4>{article.title}</h4>
+      <p>{article.summary}</p>
+      <div className="leer-mas">Leer más →</div>
+    </div>
+  </Link>
+);
 
-  // Lógica para separar artículos destacados del resto
-  // En este caso, tomaremos los primeros 3 como destacados y el resto como "otros"
-  const articulosDestacados = articulos.slice(0, 3);
-  const otrosArticulos = articulos.slice(3);
+const ARTICLES_PER_PAGE = 3; // Mostrar 3 artículos por página en la sección principal
+
+export default function Blog() {
+  const [searchParams] = useSearchParams();
+  const selectedCategory = searchParams.get('categoria');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Artículos para el slider (los 3 primeros del total)
+  const featuredArticles = articles.slice(0, 3);
+
+  // Artículos para la paginación (todos los artículos, filtrados por categoría si aplica)
+  const allArticlesForPagination = selectedCategory && selectedCategory !== 'Todos'
+    ? articles.filter(a => a.category === selectedCategory)
+    : articles;
+
+  const allCategories = ['Todos', ...new Set(articles.map(a => a.category))];
+
+  // Lógica de paginación
+  const totalPages = Math.ceil(allArticlesForPagination.length / ARTICLES_PER_PAGE);
+  const startIndex = (currentPage - 1) * ARTICLES_PER_PAGE;
+  const endIndex = startIndex + ARTICLES_PER_PAGE;
+  const articlesToDisplay = allArticlesForPagination.slice(startIndex, endIndex);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Opcional: scroll al inicio de la página
+  };
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={currentPage === i ? 'pagination-button active' : 'pagination-button'}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pageNumbers;
+  };
 
   return (
     <div className="blog-page-container fade-in">
@@ -35,19 +74,19 @@ export default function Blog() {
         modules={[Autoplay, Pagination, Navigation]}
         spaceBetween={30}
         centeredSlides={true}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        autoplay={{ delay: 4500, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         navigation={true}
-        loop={articulosDestacados.length > 1}
+        loop={featuredArticles.length > 1}
       >
-        {articulosDestacados.map(articulo => (
-          <SwiperSlide key={articulo.id}>
-            <Link to={`/blog/${articulo.slug}`} className="articulo-destacado-slide">
-              <img src={articulo.imagen} alt={articulo.titulo} />
+        {featuredArticles.map(article => (
+          <SwiperSlide key={article.id}>
+            <Link to={`/blog/${article.slug}`} className="articulo-destacado-slide">
+              <img src={article.imageUrl} alt={article.title} />
               <div className="destacado-overlay">
-                <span className="categoria-tag">{articulo.categoria}</span>
-                <h2>{articulo.titulo}</h2>
-                <p>{articulo.resumen}</p>
+                <span className="categoria-tag">{article.category}</span>
+                <h2>{article.title}</h2>
+                <p>{article.summary}</p>
               </div>
             </Link>
           </SwiperSlide>
@@ -56,31 +95,56 @@ export default function Blog() {
 
       <div className="blog-content-wrapper">
         <main className="blog-main-content">
-          <h3>Otras Publicaciones</h3>
-          {otrosArticulos.length > 0 ? (
-            otrosArticulos.map(articulo => (
-              <Link to={`/blog/${articulo.slug}`} key={articulo.id} className="articulo-card">
-                <div className="card-imagen"><img src={articulo.imagen} alt={articulo.titulo} /></div>
-                <div className="card-texto">
-                  <span className="categoria-tag">{articulo.categoria}</span>
-                  <h4>{articulo.titulo}</h4>
-                  <p>{articulo.resumen}</p>
-                  <div className="leer-mas">Leer más →</div>
-                </div>
-              </Link>
-            ))
+          <h3>{selectedCategory && selectedCategory !== 'Todos' ? `Publicaciones sobre ${selectedCategory}` : 'Todas las Publicaciones'}</h3>
+          {articlesToDisplay.length > 0 ? (
+            articlesToDisplay.map(article => <ArticleCard key={article.id} article={article} />)
           ) : (
-            <p>No hay más publicaciones por el momento.</p>
+            <p>No hay publicaciones en esta categoría.</p>
+          )}
+
+          {totalPages > 1 && (
+            <div className="pagination-container">
+              <button
+                onClick={() => handlePageChange(1)}
+                disabled={currentPage === 1}
+                className="pagination-button"
+              >
+                Primera
+              </button>
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="pagination-button"
+              >
+                Anterior
+              </button>
+              {renderPageNumbers()}
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="pagination-button"
+              >
+                Siguiente
+              </button>
+              <button
+                onClick={() => handlePageChange(totalPages)}
+                disabled={currentPage === totalPages}
+                className="pagination-button"
+              >
+                Última
+              </button>
+            </div>
           )}
         </main>
 
         <aside className="blog-sidebar">
-          {/* Aquí podrías agregar contenido estático o enlaces a categorías */}
           <h4>Categorías</h4>
           <ul>
-            <li><Link to="/blog">Todos</Link></li>
-            <li><Link to="/blog?categoria=Productos">Productos</Link></li>
-            <li><Link to="/blog?categoria=Salud">Salud</Link></li>
+            {allCategories.map(category => (
+              <li key={category} className={selectedCategory === category || (!selectedCategory && category === 'Todos') ? 'active-category' : ''}>
+                <Link to={`/blog?categoria=${category}`}>{category}</Link>
+              </li>
+            ))}
           </ul>
         </aside>
       </div>

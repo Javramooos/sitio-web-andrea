@@ -120,3 +120,16 @@
     justify-content: center;
   }
 }
+.footer-legal-links {
+  margin-top: 0.5rem;
+}
+
+.footer-legal-links a {
+  color: var(--texto-secundario);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer-legal-links a:hover {
+  text-decoration: underline;
+}

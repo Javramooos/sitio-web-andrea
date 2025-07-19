@@ -8,7 +8,7 @@ const DrDiazSection = ({ imageSrc, mainTitle, mainSubtitle, descriptionText }) =
       <p className={styles.mainSubtitle}>{mainSubtitle}</p>
       <div className={styles.contentWrapper}>
         <div className={styles.imageContainer}>
-          <img src={imageSrc} alt="Dra. Andrea Diaz" className={styles.drDiazImage} />
+          <img src={imageSrc} alt="Dra. Andrea Diaz" className={styles.drDiazImage} loading="lazy" decoding="async" />
         </div>
         <div className={styles.textContent}>
           <p className={styles.description}>{descriptionText}</p>

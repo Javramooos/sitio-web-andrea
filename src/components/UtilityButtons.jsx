@@ -42,7 +42,7 @@ export default function UtilityButtons() {
   return (
     <>
       <a 
-        href="https://wa.me/573001234567" 
+        href="https://wa.me/573143712078" 
         target="_blank" 
         rel="noopener noreferrer"
         className={`whatsapp-button ${showWhatsApp ? 'visible' : ''}`}

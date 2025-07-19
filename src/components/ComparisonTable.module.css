@@ -1,0 +1,60 @@
+.tableContainer {
+  margin: 3rem 0;
+  overflow-x: auto; /* Para responsividad en móviles */
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+}
+
+.comparisonTable th, .comparisonTable td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.comparisonTable th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+}
+
+.productImage {
+  max-width: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.productName {
+  display: block;
+  font-weight: 600;
+  color: #333;
+}
+
+.rating {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #007bff;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff; /* Azul primario */
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.ctaButton:hover {
+  background-color: white;
+  color: #007bff;
+}
+
+/* Estilos para el enlace que envuelve la imagen y el nombre */
+.comparisonTable td a {
+  text-decoration: none;
+}
