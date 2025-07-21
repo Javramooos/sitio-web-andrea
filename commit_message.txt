@@ -1,1 +1,0 @@
-fix: Re-apply modal to testimonial images

@@ -12,5 +12,8 @@ export default defineConfig({
     // Opcional: esto asegura que si el 5175 está ocupado, falle
     // en lugar de buscar otro puerto. Es bueno para la consistencia.
     strictPort: true,
+  },
+  build: {
+    minify: 'terser',
   }
 })
