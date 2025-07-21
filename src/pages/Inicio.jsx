@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import './Inicio.css';
 import DrDiazSection from '../components/DrDiazSection';
 import InfoSection from '../components/InfoSection';
 import { articles } from '../articuloData'; // Importamos los datos del blog
+import ImageModal from '../components/ImageModal';
 
 // --- Datos para las secciones ---
 const testimonials = [
@@ -43,6 +44,18 @@ const services = [
 ];
 
 export default function Inicio() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImageUrl, setModalImageUrl] = useState('');
+
+  const openModal = (imageUrl) => {
+    setModalImageUrl(imageUrl);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalImageUrl('');
+  };
   // Seleccionamos los artículos directamente de los datos estáticos
   const articuloSalud = articles.find(p => p.category === 'Salud');
   const articuloProducto = articles.find(p => p.category === 'Productos');
@@ -89,10 +102,10 @@ export default function Inicio() {
 
           {/* --- Meet Dr. Andrea Diaz Section --- */}
           <DrDiazSection
-            imageSrc="https://i0.wp.com/revistareplicante.com/wp-content/uploads/2011/06/dr-house-2.jpeg?fit=320%2C474&ssl=1"
+            imageSrc="/assets/principal.jpg"
             mainTitle="Conoce a la Dra. Andrea Diaz"
-            mainSubtitle="Especialista en Medicina Estética Avanzada"
-            descriptionText="Con más de 10 años de experiencia, la Dra. Andrea Diaz es una especialista líder dedicada a ofrecer cuidado personalizado y lograr resultados naturales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed posuere magna, at aliquam quam. Vivamus pretium sit amet nisl dignissim luctus. Suspendisse ultrices gravida nisi, eget auctor nisl pulvinar et. In hac habitasse platea dictumst. Pellentesque tortor lacus, laoreet nec ligula a, egestas posuere urna. Suspendisse suscipit purus id aliquam feugiat. Vestibulum in nisi molestie, molestie erat vel, tincidunt nisl. Vestibulum dapibus sapien vel leo dictum feugiat. Maecenas eget est non ex vulputate congue. Suspendisse fringilla enim massa, vel fringilla nibh dapibus at. In hac habitasse platea dictumst. In hac habitasse platea dictumst. Sed consequat, erat ac vulputate pharetra, purus dui ultrices mauris, quis fermentum ex dui in orci."
+            mainSubtitle="Experta en Medicina Estética Avanzada"
+            descriptionText="Con más de 10 años de experiencia, la Dra. Andrea Diaz es una experta líder dedicada a ofrecer cuidado personalizado y lograr resultados naturales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed posuere magna, at aliquam quam. Vivamus pretium sit amet nisl dignissim luctus. Suspendisse ultrices gravida nisi, eget auctor nisl pulvinar et. In hac habitasse platea dictumst. Pellentesque tortor lacus, laoreet nec ligula a, egestas posuere urna. Suspendisse suscipit purus id aliquam feugiat. Vestibulum in nisi molestie, molestie erat vel, tincidunt nisl. Vestibulum dapibus sapien vel leo dictum feugiat. Maecenas eget est non ex vulputate congue. Suspendisse fringilla enim massa, vel fringilla nibh dapibus at. In hac habitasse platea dictumst. In hac habitasse platea dictumst. Sed consequat, erat ac vulputate pharetra, purus dui ultrices mauris, quis fermentum ex dui in orci."
           />
 
           {/* --- Trusted by Patients Section --- */}
@@ -102,10 +115,10 @@ export default function Inicio() {
             <div className="patient-images-grid">
               {[1, 2, 3, 4].map((i) => {
                 const patientImages = [
-                  'https://cdn-icons-png.flaticon.com/512/6660/6660254.png',
-                  'https://img.freepik.com/vector-premium/joven-doctora-saludando_70172-3507.jpg?semt=ais_hybrid&w=740',
-                  'https://media.istockphoto.com/id/1372002650/es/foto/retrato-recortado-de-una-atractiva-joven-doctora-de-pie-con-los-brazos-cruzados-en-la-oficina.jpg?s=612x612&w=0&k=20&c=nyNHWMzJiXcmpJOA5jueMfaFTMKLiSZ2yKMFGvNLrg0=',
-                  'https://png.pngtree.com/png-vector/20250320/ourlarge/pngtree-smiling-cartoon-female-doctor-with-arms-crossed-ready-to-assist-png-image_15793331.png',
+                  '/assets/confiado1.jpg',
+                  '/assets/confiado2.JPG',
+                  '/assets/confiado3jpg.jpg',
+                  '/assets/confiado4.jpg',
                 ];
                 return (
                   <div key={i} className="patient-image-container">
@@ -135,11 +148,11 @@ export default function Inicio() {
                   <p className="testimonial-text">"{testimonial.text}"</p>
                   {testimonial.beforeImage && testimonial.afterImage && (
                     <div className="testimonial-before-after">
-                      <div className="before-image-container">
+                      <div className="before-image-container" onClick={() => openModal(testimonial.beforeImage)}>
                         <img src={testimonial.beforeImage} alt="Antes" className="before-image" />
                         <span className="image-label">Antes</span>
                       </div>
-                      <div className="after-image-container">
+                      <div className="after-image-container" onClick={() => openModal(testimonial.afterImage)}>
                         <img src={testimonial.afterImage} alt="Después" className="after-image" />
                         <span className="image-label">Después</span>
                       </div>
@@ -221,6 +234,12 @@ export default function Inicio() {
 
         </div>
       </main>
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        imageUrl={modalImageUrl}
+        altText="Vista ampliada"
+      />
     </div>
   );
 }

@@ -41,7 +41,7 @@ const articleData = {
     },
     {
       question: "¿Los tratamientos capilares realmente ayudan con la caída del cabello?",
-      answer: "Algunos tratamientos están formulados con ingredientes que fortalecen el folículo piloso y estimulan el crecimiento, lo que puede ayudar a reducir la caída. Sin embargo, para la caída severa, es recomendable consultar a un especialista."
+      answer: "Algunos tratamientos están formulados con ingredientes que fortalecen el folículo piloso y estimulan el crecimiento, lo que puede ayudar a reducir la caída. Sin embargo, para la caída severa, es recomendable consultar a un experta."
     },
     {
       question: "¿Puedo usar varios tratamientos a la vez?",

@@ -126,6 +126,12 @@
   text-overflow: ellipsis;
 }
 
+@media (max-width: 768px) {
+  .hero-button {
+    margin-top: 3rem;
+  }
+}
+
 /* Trusted by Patients Section */
 .trusted-patients-section {
   padding-top: 4rem; /* py-16 */
@@ -151,6 +157,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr)); /* grid-cols-2 */
   gap: 1rem; /* gap-4 */
+  margin: 1rem;
 }
 
 @media (min-width: 768px) { /* md:grid-cols-4 */
@@ -184,6 +191,8 @@
 .testimonials-section {
   padding-top: 4rem; /* py-16 */
   padding-bottom: 4rem; /* py-16 */
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .testimonials-title {
@@ -269,8 +278,7 @@
 
 .before-image-container:hover,
 .after-image-container:hover {
-  transform: scale(1.5);
-  z-index: 10;
+  cursor: pointer;
 }
 
 .before-image,

@@ -77,8 +77,8 @@
   }
 
   .imageContainer {
-    width: 300px; /* Ajusta el tamaño de la imagen en móvil */
-    height: 300px;
+    width: 100%; /* Ajusta el tamaño de la imagen en móvil */
+    height: auto;
     margin-bottom: 20px; /* Espacio entre la imagen y el texto en móvil */
   }
 

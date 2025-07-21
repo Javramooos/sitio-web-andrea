@@ -21,7 +21,7 @@ const InfoSection = () => {
         <InfoCard
           icon={<i className="fas fa-user-md"></i>} // Icono de doctor
           title="Profesionales Expertos"
-          description="Nuestro equipo está formado por especialistas altamente cualificados y con amplia experiencia."
+          description="Nuestro equipo está formado por expertas altamente cualificados y con amplia experiencia."
         />
         <InfoCard
           icon={<i className="fas fa-clinic-medical"></i>} // Icono de clínica
