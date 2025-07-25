@@ -87,7 +87,7 @@ export default function Inicio() {
                 Medicina Estética Avanzada para tu Belleza Natural
               </h1>
               <p className="hero-subtitle">
-                La Dra. Andrea Diaz se especializa en tratamientos estéticos avanzados diseñados para tus necesidades únicas.
+                La Dra. Andrea Diaz es experta en tratamientos estéticos avanzados diseñados para tus necesidades únicas.
               </p>
               <a href="servicios">
                 <button className="hero-button">
