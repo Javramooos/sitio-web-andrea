@@ -41,7 +41,7 @@ export default function TerminosCondiciones() {
 
       <h2 className="dark:text-white">7. Ley Aplicable y Jurisdicción</h2>
       <p className="dark:text-gray-300">
-        Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de la República de Colombia.
+         Los términos y condiciones se regirán e interpretarán de acuerdo con la normativa aplicable vigente dentro del territorio colombiano.
       </p>
 
       <h2 className="dark:text-white">8. Modificaciones</h2>

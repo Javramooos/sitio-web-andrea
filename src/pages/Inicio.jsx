@@ -105,7 +105,16 @@ export default function Inicio() {
             imageSrc="/assets/principal.jpg"
             mainTitle="Conoce a la Dra. Andrea Diaz"
             mainSubtitle="Experta en Medicina Estética Avanzada"
-            descriptionText="Con más de 10 años de experiencia, la Dra. Andrea Diaz es una experta líder dedicada a ofrecer cuidado personalizado y lograr resultados naturales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed posuere magna, at aliquam quam. Vivamus pretium sit amet nisl dignissim luctus. Suspendisse ultrices gravida nisi, eget auctor nisl pulvinar et. In hac habitasse platea dictumst. Pellentesque tortor lacus, laoreet nec ligula a, egestas posuere urna. Suspendisse suscipit purus id aliquam feugiat. Vestibulum in nisi molestie, molestie erat vel, tincidunt nisl. Vestibulum dapibus sapien vel leo dictum feugiat. Maecenas eget est non ex vulputate congue. Suspendisse fringilla enim massa, vel fringilla nibh dapibus at. In hac habitasse platea dictumst. In hac habitasse platea dictumst. Sed consequat, erat ac vulputate pharetra, purus dui ultrices mauris, quis fermentum ex dui in orci."
+            descriptionText="Con 10 años de trayectoria desde su graduación en 2015, la Dra. Andrea Diaz es una experta líder que fusiona la ciencia médica con el arte de la estética para lograr resultados reales y naturales. Su pasión no es solo transformar la piel, sino construir la confianza que viene con ella. Antes de dedicarse por completo a la estética, forjó su carácter y precisión en los entornos más exigentes, desde salas de emergencia hasta Unidades de Cuidados Intensivos (UCI), lo que le da una perspectiva única y un compromiso absoluto con la seguridad del paciente.
+
+
+
+Su sólida base como Médica Cirujana, graduada de la prestigiosa Universidad del Zulia y con título convalidado en Colombia , se eleva con una formación de élite: no uno, sino dos Másteres Internacionales en 
+
+
+
+
+Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encuentras a una experta en belleza, sino a una médica integral que pone su vasta experiencia y conocimiento a tu servicio."
           />
 
           {/* --- Trusted by Patients Section --- */}
