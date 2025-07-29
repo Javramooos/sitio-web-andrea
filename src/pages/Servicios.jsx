@@ -130,7 +130,7 @@ export default function Servicios() {
       </div>
       
      {/* ================================================== */}
-      {/* === PEGA ESTA NUEVA SECCIÓN DE FAQ GENERAL AQUÍ === */}
+      {/* === NUEVA SECCIÓN DE FAQ GENERAL AQUÍ === */}
       {/* ================================================== */}
       <div className="faq-servicios-container">
         <h2>Preguntas Frecuentes Generales</h2>
