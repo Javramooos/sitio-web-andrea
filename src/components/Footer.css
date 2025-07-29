@@ -118,18 +118,10 @@
   .footer-copy, .footer-legal-links {
     text-align: center;
     justify-content: center;
+    gap: 0.75rem; /* Asegura el espaciado entre los enlaces legales en móvil */
   }
-}
-.footer-legal-links {
-  margin-top: 0.5rem;
-}
 
-.footer-legal-links a {
-  color: var(--texto-secundario);
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-.footer-legal-links a:hover {
-  text-decoration: underline;
+  .footer-legal-links span {
+    margin: 0; /* Elimina cualquier margen extra del separador */
+  }
 }

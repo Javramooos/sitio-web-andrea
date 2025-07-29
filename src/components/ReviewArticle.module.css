@@ -1,4 +1,3 @@
-
 .reviewArticle {
   max-width: 800px;
   margin: 0 auto;
@@ -6,16 +5,24 @@
   font-family: sans-serif;
 }
 
+/* === MODIFICACIÓN CLAVE AQUÍ === */
 .header {
+  /* Propiedades que ya tenías */
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
   margin-bottom: 20px;
+  
+  /* Las 3 líneas mágicas para alinear todo a la izquierda */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .breadcrumb ol {
   list-style: none;
-  padding: 0; 
-  margin: 0 0 10px -40px; /* Aumentado el margen negativo para mover más a la izquierda */
+  padding: 0;
+  /* Se eliminó el margen negativo que ya no es necesario */
+  margin: 0 0 10px 0; 
 }
 
 .breadcrumb li {
