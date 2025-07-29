@@ -12,12 +12,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 const serviciosData = [
-  { id: 'facial', icono: '/assets/icon_facial.png', categoria: 'Facial', titulo: 'Rejuvenecimiento Facial', descripcionCorta: 'Tratamientos avanzados para una piel joven y radiante.', videoUrl: 'https://www.youtube.com/watch?v=l5VF1bZ9\_B8', posterUrl: '/assets/poster_facial.jpg', beneficios: ['Reduce líneas finas.', 'Mejora la firmeza.', 'Aporta luminosidad.'], faqs: [{ pregunta: '¿Es doloroso?', respuesta: 'La mayoría son indoloros.' }] },
-  { id: 'corporal', icono: '/assets/icon_corporal.png', categoria: 'Corporal', titulo: 'Contorno Corporal', descripcionCorta: 'Esculpe y define la silueta ideal para ti.', videoUrl: 'https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dl5VF1bZ9_B8', posterUrl: '/assets/poster_corporal.jpg', beneficios: ['Reduce grasa localizada.', 'Mejora la celulitis.'], faqs: [{ pregunta: '¿Resultados permanentes?', respuesta: 'Son duraderos con un estilo de vida saludable.' }] },
-  { id: 'piel', icono: '/assets/icon_piel.png', categoria: 'Cuidado de la Piel', titulo: 'Cuidado de la Piel', descripcionCorta: 'Soluciones personalizadas para una piel sana.', videoUrl: 'https://www.youtube.com/watch?v=fi-S9f1k\_l0', posterUrl: '/assets/poster_piel.jpg', beneficios: ['Control de acné.', 'Atenuación de manchas.'], faqs: [{ pregunta: '¿Qué rutina me recomiendan?', respuesta: 'La Dra. Diaz diseñará una rutina específica.' }] },
-  { id: 'anti-age', icono: '/assets/icon_antiage.png', categoria: 'Facial', titulo: 'Anti-Envejecimiento', descripcionCorta: 'Combate los signos del envejecimiento de forma efectiva.', videoUrl: 'https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dfi-S9f1k_l0', posterUrl: '/assets/poster_antiage.jpg', beneficios: ['Prevención de arrugas.', 'Piel más densa.'], faqs: [{ pregunta: '¿A qué edad debo empezar?', respuesta: 'Los tratamientos preventivos pueden empezar desde los 25-30 años.' }] },
-  { id: 'capilar', icono: '/assets/icon_capilar.png', categoria: 'Capilar', titulo: 'Restauración Capilar', descripcionCorta: 'Restaura y mejora la salud de tu cabello.', videoUrl: 'https://www.youtube.com/watch?v=w\_tEWaT6O-c', posterUrl: '/assets/poster_capilar.jpg', beneficios: ['Aumenta la densidad.', 'Fortalece el folículo.'], faqs: [{ pregunta: '¿Cuántas sesiones necesito?', respuesta: 'Se recomiendan entre 3 y 5 sesiones.' }] },
-  { id: 'bienestar', icono: '/assets/icon_bienestar.png', categoria: 'Bienestar', titulo: 'Bienestar', descripcionCorta: 'Enfoques holísticos para mejorar tu bienestar.', videoUrl: 'https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dw_tEWaT6O-c', posterUrl: '/assets/poster_bienestar.jpg', beneficios: ['Reduce el estrés.', 'Mejora la calidad del sueño.'], faqs: [{ pregunta: '¿Qué incluye?', respuesta: 'Incluye terapias de relajación y suplementación.' }] },
+  { id: 'facial', icono: '/assets/icon_facial.png', categoria: 'Facial', titulo: 'Rejuvenecimiento Facial', descripcionCorta: 'Tratamientos avanzados para una piel joven y radiante.', videoUrl: 'https://www.youtube.com/watch?v=l5VF1bZ9_B8', posterUrl: '/assets/poster_facial.jpg', beneficios: ['Reduce líneas finas.', 'Mejora la firmeza.', 'Aporta luminosidad.'], faqs: [{ pregunta: '¿Es doloroso?', respuesta: 'La mayoría son indoloros.' }] },
+  { id: 'corporal', icono: '/assets/icon_corporal.png', categoria: 'Corporal', titulo: 'Contorno Corporal', descripcionCorta: 'Esculpe y define la silueta ideal para ti.', videoUrl: 'https://www.google.com/search?q=https://www.youtube.com/watch?v=l5VF1bZ9_B8', posterUrl: '/assets/poster_corporal.jpg', beneficios: ['Reduce grasa localizada.', 'Mejora la celulitis.'], faqs: [{ pregunta: '¿Resultados permanentes?', respuesta: 'Son duraderos con un estilo de vida saludable.' }] },
+  { id: 'piel', icono: '/assets/icon_piel.png', categoria: 'Cuidado de la Piel', titulo: 'Cuidado de la Piel', descripcionCorta: 'Soluciones personalizadas para una piel sana.', videoUrl: 'https://www.youtube.com/watch?v=fi-S9f1k_l0', posterUrl: '/assets/poster_piel.jpg', beneficios: ['Control de acné.', 'Atenuación de manchas.'], faqs: [{ pregunta: '¿Qué rutina me recomiendan?', respuesta: 'La Dra. Diaz diseñará una rutina específica.' }] },
+  { id: 'anti-age', icono: '/assets/icon_antiage.png', categoria: 'Facial', titulo: 'Anti-Envejecimiento', descripcionCorta: 'Combate los signos del envejecimiento de forma efectiva.', videoUrl: 'https://www.google.com/search?q=https://www.youtube.com/watch?v=fi-S9f1k_l0', posterUrl: '/assets/poster_antiage.jpg', beneficios: ['Prevención de arrugas.', 'Piel más densa.'], faqs: [{ pregunta: '¿A qué edad debo empezar?', respuesta: 'Los tratamientos preventivos pueden empezar desde los 25-30 años.' }] },
+  { id: 'capilar', icono: '/assets/icon_capilar.png', categoria: 'Capilar', titulo: 'Restauración Capilar', descripcionCorta: 'Restaura y mejora la salud de tu cabello.', videoUrl: 'https://www.youtube.com/watch?v=w_tEWaT6O-c', posterUrl: '/assets/poster_capilar.jpg', beneficios: ['Aumenta la densidad.', 'Fortalece el folículo.'], faqs: [{ pregunta: '¿Cuántas sesiones necesito?', respuesta: 'Se recomiendan entre 3 y 5 sesiones.' }] },
+  { id: 'bienestar', icono: '/assets/icon_bienestar.png', categoria: 'Bienestar', titulo: 'Bienestar', descripcionCorta: 'Enfoques holísticos para mejorar tu bienestar.', videoUrl: 'https://www.google.com/search?q=https://www.youtube.com/watch?v=w_tEWaT6O-c', posterUrl: '/assets/poster_bienestar.jpg', beneficios: ['Reduce el estrés.', 'Mejora la calidad del sueño.'], faqs: [{ pregunta: '¿Qué incluye?', respuesta: 'Incluye terapias de relajación y suplementación.' }] },
 ];
 const generalFaqData = [
     { pregunta: '¿Necesito una consulta inicial antes de cualquier tratamiento?', respuesta: 'Sí, siempre recomendamos una consulta de valoración inicial para recomendar el plan de tratamiento más seguro y efectivo para ti.'},
@@ -43,7 +43,6 @@ export default function Servicios() {
   const [filtroActivo, setFiltroActivo] = useState('Todos');
   const [servicioActivo, setServicioActivo] = useState(serviciosData[0]);
   const [playingVideo, setPlayingVideo] = useState(false);
-  const [openGeneralFaqIndex, setOpenGeneralFaqIndex] = useState(null);
   const serviciosFiltrados = serviciosData.filter(s => filtroActivo === 'Todos' ? true : s.categoria === filtroActivo);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ export default function Servicios() {
     } else {
       setServicioActivo(null);
     }
-  }, [filtroActivo]);
+  }, [filtroActivo, serviciosFiltrados]);
 
   const handleSelectServicio = (servicio) => {
     setServicioActivo(servicio);
@@ -140,8 +139,6 @@ export default function Servicios() {
               key={index}
               pregunta={faq.pregunta}
               respuesta={faq.respuesta}
-              isOpen={openGeneralFaqIndex === index}
-              onClick={() => setOpenGeneralFaqIndex(openGeneralFaqIndex === index ? null : index)}
             />
           ))}
         </div>

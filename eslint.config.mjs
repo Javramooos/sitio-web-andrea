@@ -4,7 +4,17 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist'] },
+  {
+    ignores: [
+      'dist',
+      '.unlighthouse/',
+      'mi-blog-backend/',
+      'postcss.config.js',
+      'server.js',
+      'tailwind.config.js',
+      'drizzle.config.ts',
+    ],
+  },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {

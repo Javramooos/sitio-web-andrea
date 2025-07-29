@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useState, useEffect } from 'react';
 import styles from './FAQSection.module.css';
 
 const FAQItem = ({ question, answer }) => {
@@ -17,24 +16,40 @@ const FAQItem = ({ question, answer }) => {
 };
 
 const FAQSection = ({ faqs }) => {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer.replace(/<[^>]*>?/gm, '') // Remove HTML for schema
+  useEffect(() => {
+    if (!faqs || faqs.length === 0) {
+      return;
+    }
+    
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer.replace(/<[^>]*>?/gm, '') // Remove HTML for schema
+        }
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'faq-schema';
+    script.innerHTML = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      const scriptElement = document.getElementById('faq-schema');
+      if (scriptElement) {
+        document.head.removeChild(scriptElement);
       }
-    }))
-  };
+    };
+  }, [faqs]);
 
   return (
     <section className={styles.faqSection}>
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
       <h2 className={styles.title}>Preguntas Frecuentes</h2>
       <div className={styles.faqList}>
         {faqs.map((faq, index) => (
