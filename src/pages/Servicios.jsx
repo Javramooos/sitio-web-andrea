@@ -43,15 +43,19 @@ export default function Servicios() {
   const [filtroActivo, setFiltroActivo] = useState('Todos');
   const [servicioActivo, setServicioActivo] = useState(serviciosData[0]);
   const [playingVideo, setPlayingVideo] = useState(false);
+
   const serviciosFiltrados = serviciosData.filter(s => filtroActivo === 'Todos' ? true : s.categoria === filtroActivo);
 
-  useEffect(() => {
-    if (serviciosFiltrados.length > 0) {
-      setServicioActivo(serviciosFiltrados[0]);
+  const handleFiltroClick = (cat) => {
+    setFiltroActivo(cat);
+    const filteredServices = serviciosData.filter(s => cat === 'Todos' ? true : s.categoria === cat);
+    if (filteredServices.length > 0) {
+      setServicioActivo(filteredServices[0]);
     } else {
       setServicioActivo(null);
     }
-  }, [filtroActivo, serviciosFiltrados]);
+    setPlayingVideo(false);
+  };
 
   const handleSelectServicio = (servicio) => {
     setServicioActivo(servicio);
@@ -67,7 +71,7 @@ export default function Servicios() {
 
       <div className="filtros-container">
         {categorias.map(cat => (
-          <button key={cat} className={`filtro-btn ${filtroActivo === cat ? 'active' : ''}`} onClick={() => setFiltroActivo(cat)}>
+          <button key={cat} className={`filtro-btn ${filtroActivo === cat ? 'active' : ''}`} onClick={() => handleFiltroClick(cat)}>
             {cat}
           </button>
         ))}
@@ -76,6 +80,7 @@ export default function Servicios() {
       <div className="servicios-layout">
         <aside className="servicios-menu-sidebar">
           <Swiper
+            key={filtroActivo}
             direction={'vertical'}
             slidesPerView={'auto'}
             spaceBetween={10}
