@@ -10,8 +10,8 @@ import PoliticaPrivacidad from './pages/PoliticaPrivacidad';
 import TerminosCondiciones from './pages/TerminosCondiciones';
 import ArticuloDetalle from './pages/ArticuloDetalle';
 import UtilityButtons from './components/UtilityButtons';
-import { SpeedInsights } from "@vercel/speed-insights/react"
-
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
