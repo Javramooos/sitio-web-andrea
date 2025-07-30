@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import './Agenda.css';
 
 const tratamientos = [
-  { id: 'microdermoabrasion', nombre: 'Microdermoabrasión' },
-  { id: 'rellenos', nombre: 'Rellenos Dérmicos' },
-  { id: 'peeling', nombre: 'Peeling Químico' },
-  { id: 'botox', nombre: 'Toxina Botulínica' },
+  { id: 'rejuvenecimiento-facial', nombre: 'Rejuvenecimiento Facial' },
+  { id: 'contorno-corporal', nombre: 'Contorno Corporal' },
+  { id: 'cuidado-de-la-piel', nombre: 'Cuidado de la Piel' },
+  { id: 'anti-envejecimiento', nombre: 'Anti-Envejecimiento' },
+  { id: 'restauracion-capilar', nombre: 'Restauración Capilar' },
+  { id: 'bienestar', nombre: 'Bienestar' },
   { id: 'otro', nombre: 'Otro (especificar en observaciones)' }
 ];
 const consejosPorTratamiento = {
-  microdermoabrasion: "Evita la exposición solar directa 3 días antes de tu sesión.",
-  rellenos: "No consumas alcohol 24 horas antes para minimizar la posibilidad de hematomas.",
-  peeling: "Suspende el uso de retinoides o ácidos fuertes una semana antes de tu cita.",
-  botox: "Evita tomar aspirina o antiinflamatorios una semana antes para reducir el riesgo de moratones.",
+  'rejuvenecimiento-facial': "Evita la exposición solar directa 3 días antes de tu sesión y ven con la cara lavada.",
+  'contorno-corporal': "Asegúrate de estar bien hidratado/a antes de tu cita para optimizar los resultados.",
+  'cuidado-de-la-piel': "Suspende el uso de retinoides o ácidos fuertes una semana antes de tu cita.",
+  'anti-envejecimiento': "Evita tomar aspirina o antiinflamatorios una semana antes para reducir el riesgo de moratones.",
+  'restauracion-capilar': "Lava tu cabello el día de la cita y no apliques productos como geles o sprays.",
+  'bienestar': "Ven con ropa cómoda y prepárate para una sesión de relajación profunda."
 };
 const horasDisponibles = ['08:30 AM', '10:30 AM', '12:00 PM', '02:00 PM', '03:30 PM', '05:30 PM'];
 

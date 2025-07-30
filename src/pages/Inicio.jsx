@@ -90,6 +90,7 @@ export default function Inicio() {
               ref={videoRef}
               autoPlay
               loop
+              muted
               playsInline
               preload="auto"
               className="hero-video"

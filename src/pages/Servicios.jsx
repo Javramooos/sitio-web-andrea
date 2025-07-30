@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom'; // Importamos useLocation
+import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './Servicios.css';
-
-// Importamos los componentes y módulos de Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-
-// Importamos los estilos de Swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 const serviciosData = [
-  { id: 'rejuvenecimiento-facial', icono: '/assets/icon_facial.png', categoria: 'Facial', titulo: 'Rejuvenecimiento Facial', descripcionCorta: 'Tratamientos avanzados para una piel joven y radiante.', videoUrl: 'https://www.youtube.com/embed/l5VF1bZ9_B8', posterUrl: '/assets/poster_facial.jpg', beneficios: ['Reduce líneas finas.', 'Mejora la firmeza.', 'Aporta luminosidad.'], faqs: [{ pregunta: '¿Es doloroso?', respuesta: 'La mayoría son indoloros.' }] },
-  { id: 'contorno-corporal', icono: '/assets/icon_corporal.png', categoria: 'Corporal', titulo: 'Contorno Corporal', descripcionCorta: 'Esculpe y define la silueta ideal para ti.', videoUrl: 'https://www.youtube.com/embed/l5VF1bZ9_B8', posterUrl: '/assets/poster_corporal.jpg', beneficios: ['Reduce grasa localizada.', 'Mejora la celulitis.'], faqs: [{ pregunta: '¿Resultados permanentes?', respuesta: 'Son duraderos con un estilo de vida saludable.' }] },
-  { id: 'cuidado-de-la-piel', icono: '/assets/icon_piel.png', categoria: 'Cuidado de la Piel', titulo: 'Cuidado de la Piel', descripcionCorta: 'Soluciones personalizadas para una piel sana.', videoUrl: 'https://www.youtube.com/embed/fi-S9f1k_l0', posterUrl: '/assets/poster_piel.jpg', beneficios: ['Control de acné.', 'Atenuación de manchas.'], faqs: [{ pregunta: '¿Qué rutina me recomiendan?', respuesta: 'La Dra. Diaz diseñará una rutina específica.' }] },
-  { id: 'anti-envejecimiento', icono: '/assets/icon_antiage.png', categoria: 'Facial', titulo: 'Anti-Envejecimiento', descripcionCorta: 'Combate los signos del envejecimiento de forma efectiva.', videoUrl: 'https://www.youtube.com/embed/fi-S9f1k_l0', posterUrl: '/assets/poster_antiage.jpg', beneficios: ['Prevención de arrugas.', 'Piel más densa.'], faqs: [{ pregunta: '¿A qué edad debo empezar?', respuesta: 'Los tratamientos preventivos pueden empezar desde los 25-30 años.' }] },
-  { id: 'restauracion-capilar', icono: '/assets/icon_capilar.png', categoria: 'Capilar', titulo: 'Restauración Capilar', descripcionCorta: 'Restaura y mejora la salud de tu cabello.', videoUrl: 'https://www.youtube.com/embed/w_tEWaT6O-c', posterUrl: '/assets/poster_capilar.jpg', beneficios: ['Aumenta la densidad.', 'Fortalece el folículo.'], faqs: [{ pregunta: '¿Cuántas sesiones necesito?', respuesta: 'Se recomiendan entre 3 y 5 sesiones.' }] },
-  { id: 'bienestar', icono: '/assets/icon_bienestar.png', categoria: 'Bienestar', titulo: 'Bienestar', descripcionCorta: 'Enfoques holísticos para mejorar tu bienestar.', videoUrl: 'https://www.youtube.com/embed/w_tEWaT6O-c', posterUrl: '/assets/poster_bienestar.jpg', beneficios: ['Reduce el estrés.', 'Mejora la calidad del sueño.'], faqs: [{ pregunta: '¿Qué incluye?', respuesta: 'Incluye terapias de relajación y suplementación.' }] },
-];
+  { id: 'rejuvenecimiento-facial', icono: '/assets/icon_facial.png', categoria: 'Facial', titulo: 'Rejuvenecimiento Facial', descripcionCorta: 'Tratamientos avanzados para una piel joven y radiante.', videoUrl: 'https://www.youtube.com/embed/l5VF1bZ9_B8', posterUrl: '/assets/poster_facial.jpg', beneficios: ['Reduce líneas finas.', 'Mejora la firmeza.', 'Aporta luminosidad.'], faqs: [{ pregunta: '¿Es doloroso?', respuesta: 'La mayoría de los tratamientos son indoloros o se utiliza anestesia tópica para minimizar cualquier molestia.' }, { pregunta: '¿Cuánto tiempo dura la recuperación?', respuesta: 'La recuperación varía según el tratamiento, pero muchos no requieren tiempo de inactividad.' }, { pregunta: '¿Cuándo veré los resultados?', respuesta: 'Algunos resultados son inmediatos, mientras que otros mejoran progresivamente en las semanas siguientes.' }] },
+  { id: 'contorno-corporal', icono: '/assets/icon_corporal.png', categoria: 'Corporal', titulo: 'Contorno Corporal', descripcionCorta: 'Esculpe y define la silueta ideal para ti.', videoUrl: 'https://www.youtube.com/embed/l5VF1bZ9_B8', posterUrl: '/assets/poster_corporal.jpg', beneficios: ['Reduce grasa localizada.', 'Mejora la celulitis.'], faqs: [{ pregunta: '¿Los resultados son permanentes?', respuesta: 'Los resultados son duraderos, pero se recomienda un estilo de vida saludable para mantenerlos.' }, { pregunta: '¿Es una alternativa a la liposucción?', respuesta: 'Ofrecemos alternativas no invasivas a la liposucción con excelentes resultados.' }, { pregunta: '¿Cuántas sesiones se necesitan?', respuesta: 'El número de sesiones varía según el paciente y el área a tratar, pero generalmente se recomiendan de 4 a 6 sesiones.' }] },
+  { id: 'cuidado-de-la-piel', icono: '/assets/icon_piel.png', categoria: 'Cuidado de la Piel', titulo: 'Cuidado de la Piel', descripcionCorta: 'Soluciones personalizadas para una piel sana.', videoUrl: 'https://www.youtube.com/embed/fi-S9f1k_l0', posterUrl: '/assets/poster_piel.jpg', beneficios: ['Control de acné.', 'Atenuación de manchas.'], faqs: [{ pregunta: '¿Qué rutina me recomiendan?', respuesta: 'La Dra. Diaz diseñará una rutina de cuidado de la piel personalizada para tus necesidades específicas.' }, { pregunta: '¿Los productos son para todo tipo de piel?', respuesta: 'Sí, ofrecemos productos y tratamientos para todo tipo de piel, incluyendo piel sensible.' }, { pregunta: '¿Puedo combinarlo con otros tratamientos?', respuesta: 'Sí, se pueden combinar con otros tratamientos para potenciar los resultados.' }] },
+  { id: 'anti-envejecimiento', icono: '/assets/icon_antiage.png', categoria: 'Facial', titulo: 'Anti-Envejecimiento', descripcionCorta: 'Combate los signos del envejecimiento de forma efectiva.', videoUrl: 'https://www.youtube.com/embed/fi-S9f1k_l0', posterUrl: '/assets/poster_antiage.jpg', beneficios: ['Prevención de arrugas.', 'Piel más densa.'], faqs: [{ pregunta: '¿A qué edad debo empezar?', respuesta: 'Los tratamientos preventivos pueden empezar desde los 25-30 años, pero nunca es tarde para empezar a cuidarse.' }, { pregunta: '¿Son seguros los inyectables?', respuesta: 'Sí, utilizamos productos de la más alta calidad y técnicas seguras para garantizar resultados naturales.' }, { pregunta: '¿Qué es el \'Botox preventivo\'?', respuesta: 'Es el uso de toxina botulínica en dosis bajas para prevenir la formación de arrugas de expresión.' }] },
+  { id: 'restauracion-capilar', icono: '/assets/icon_capilar.png', categoria: 'Capilar', titulo: 'Restauración Capilar', descripcionCorta: 'Restaura y mejora la salud de tu cabello.', videoUrl: 'https://www.youtube.com/embed/w_tEWaT6O-c', posterUrl: '/assets/poster_capilar.jpg', beneficios: ['Aumenta la densidad.', 'Fortalece el folículo.'], faqs: [{ pregunta: '¿Cuántas sesiones necesito?', respuesta: 'Se recomiendan entre 3 y 5 sesiones, dependiendo del caso de cada paciente.' }, { pregunta: '¿Es un tratamiento doloroso?', respuesta: 'Se aplica anestesia local para minimizar cualquier molestia durante el procedimiento.' }, { pregunta: '¿Cuándo veré los resultados?', respuesta: 'Los resultados son progresivos y se empiezan a notar a partir del tercer mes.' }] },
+  { id: 'bienestar', icono: '/assets/icon_bienestar.png', categoria: 'Bienestar', titulo: 'Bienestar', descripcionCorta: 'Enfoques holísticos para mejorar tu bienestar.', videoUrl: 'https://www.youtube.com/embed/w_tEWaT6O-c', posterUrl: '/assets/poster_bienestar.jpg', beneficios: ['Reduce el estrés.', 'Mejora la calidad del sueño.'], faqs: [{ pregunta: '¿Qué incluye?', respuesta: 'Incluye terapias de relajación, suplementación y recomendaciones de estilo de vida.' }, { pregunta: '¿Es para hombres y mujeres?', respuesta: 'Sí, nuestros tratamientos de bienestar son para todos.' }, { pregunta: '¿Puedo combinarlo con otros tratamientos estéticos?', respuesta: 'Sí, de hecho, se recomienda para potenciar los resultados de otros tratamientos.' }] }
+]
 
 const generalFaqData = [
     { pregunta: '¿Necesito una consulta inicial antes de cualquier tratamiento?', respuesta: 'Sí, siempre recomendamos una consulta de valoración inicial para recomendar el plan de tratamiento más seguro y efectivo para ti.'},
@@ -53,7 +49,7 @@ export default function Servicios() {
     if (servicioDesdeUrl) {
       setServicioActivo(servicioDesdeUrl);
       setFiltroActivo(servicioDesdeUrl.categoria);
-    } else {
+    } else if (serviciosData.length > 0) {
       setServicioActivo(serviciosData[0]);
       setFiltroActivo('Todos');
     }
@@ -143,14 +139,11 @@ export default function Servicios() {
               </div>
             </>
           ) : (
-            <p>No hay servicios en esta categoría.</p>
+            <p>No hay servicios para mostrar.</p>
           )}
         </main>
       </div>
       
-     {/* ================================================== */}
-      {/* === NUEVA SECCIÓN DE FAQ GENERAL AQUÍ === */}
-      {/* ================================================== */}
       <div className="faq-servicios-container">
         <h2>Preguntas Frecuentes Generales</h2>
         <div className="faq-acordeon">
