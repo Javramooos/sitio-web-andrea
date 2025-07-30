@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Inicio.css';
 import DrDiazSection from '../components/DrDiazSection';
 import InfoSection from '../components/InfoSection';
 import { articles } from '../articuloData'; // Importamos los datos del blog
 import ImageModal from '../components/ImageModal';
+import useSEO from '../hooks/useSEO';
 
 // --- Datos para las secciones ---
 const testimonials = [
@@ -44,6 +45,19 @@ const services = [
 ];
 
 export default function Inicio() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+    }
+  }, []);
+
+  useSEO({
+    title: 'Dra. Andrea Diaz - Medicina Estética Avanzada',
+    description: 'Medicina estética avanzada en Bogotá por la Dra. Andrea Diaz. Tratamientos de rejuvenecimiento facial, contorno corporal y más para realzar tu belleza.',
+    canonical: 'https://andreadiaz.com'
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');
 
@@ -73,9 +87,9 @@ export default function Inicio() {
           {/* --- Hero Section --- */}
           <div className="hero-section">
             <video
+              ref={videoRef}
               autoPlay
               loop
-              muted
               playsInline
               preload="auto"
               className="hero-video"

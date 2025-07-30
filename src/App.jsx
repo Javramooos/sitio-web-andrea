@@ -12,10 +12,12 @@ import ArticuloDetalle from './pages/ArticuloDetalle';
 import UtilityButtons from './components/UtilityButtons';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react"
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <div className="app-container bg-white">
+      <ScrollToTop />
       <Navbar />
       <main className="main-content">
         <Routes>
