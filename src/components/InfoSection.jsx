@@ -8,8 +8,7 @@ const InfoSection = () => {
       <div className={styles.header}>
         <h2 className={styles.title}>¿Qué es la medicina estética?</h2>
         <p className={styles.subtitle}>
-          En BioRed, nos dedicamos a ofrecer soluciones innovadoras y sostenibles para el bienestar.
-          Descubre cómo podemos ayudarte a alcanzar tus objetivos.
+          Más que una simple vanidad, la medicina estética es una rama especializada de la medicina dedicada a tu bienestar y confianza. Se enfoca en mejorar tu apariencia a través de procedimientos mínimamente invasivos, seguros y con resultados naturales, siempre realizados por un médico experto.
         </p>
       </div>
       <div className={styles.cardsContainer}>

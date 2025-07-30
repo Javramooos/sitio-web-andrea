@@ -197,8 +197,8 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
                 <div className="faq-list">
                   {[
                     {
-                      question: "¿Qué es la medicina estética?",
-                      answer: "La medicina estética abarca una gama de tratamientos cosméticos no invasivos o mínimamente invasivos diseñados para mejorar su apariencia y aumentar la confianza. Estos procedimientos se centran en mejorar la apariencia cosmética a través de varios tratamientos."
+                      question: "¿A partir de qué edad se recomiendan estos tratamientos?",
+                      answer: "Esa es una de las preguntas más inteligentes que puedes hacer, porque la respuesta correcta no es un número mágico, sino un enfoque: la medicina estética moderna se adapta a tus necesidades en cada etapa de la vida. No se trata de una edad específica, sino del momento en que deseas empezar a cuidar tu piel de forma proactiva o corregir algo que te incomoda."
                     },
                     {
                       question: "¿Qué tipos de tratamientos ofrecen?",
