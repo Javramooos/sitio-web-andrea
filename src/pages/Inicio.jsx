@@ -211,7 +211,7 @@ export default function Inicio() {
                     </div>
                   </div>
                   <p className="testimonial-text">"{testimonial.text}"</p>
-                  {testimonial.beforeImage && testimonial.afterImage && (
+                  {testimonial.name !== 'Natalia Vera' && testimonial.beforeImage && testimonial.afterImage && (
                     <div className="testimonial-before-after">
                       <div className="before-image-container" onClick={() => openModal(testimonial.beforeImage)}>
                         <img src={testimonial.beforeImage} alt={`Antes del tratamiento - testimonio de ${testimonial.name}`} className="before-image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
