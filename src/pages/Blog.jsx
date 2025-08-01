@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { articles } from '../articuloData';
 import './Blog.css';
+import useSEO from '../hooks/useSEO';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -26,6 +27,11 @@ const ArticleCard = ({ article }) => (
 const ARTICLES_PER_PAGE = 3; // Mostrar 3 artículos por página en la sección principal
 
 export default function Blog() {
+  useSEO({
+    title: 'Blog - Dra. Andrea Diaz',
+    description: 'Artículos sobre medicina estética, cuidado de la piel y bienestar.',
+    canonical: 'https://andreadiazmd.com/blog'
+  });
   const [searchParams] = useSearchParams();
   const selectedCategory = searchParams.get('categoria');
   const [currentPage, setCurrentPage] = useState(1);
