@@ -48,10 +48,10 @@
 
 .image-modal-image {
   display: block;
-  width: auto;
-  height: auto;
-  max-width: none; /* Permite que la imagen sea más ancha que el contenedor */
-  max-height: none; /* Permite que la imagen sea más alta que el contenedor */
+  width: 100%; /* La imagen ocupa todo el ancho del modal */
+  height: auto; /* La altura se ajusta para mantener la proporción */
+  max-width: none;
+  max-height: none;
   border-radius: 8px;
 }
 
