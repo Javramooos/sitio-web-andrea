@@ -6,6 +6,7 @@ import InfoSection from '../components/InfoSection';
 import { articles } from '../articuloData'; // Importamos los datos del blog
 import ImageModal from '../components/ImageModal';
 import useSEO from '../hooks/useSEO';
+import JsonLD from '../components/JsonLD'; // Importamos el componente JsonLD
 
 // --- Datos para las secciones ---
 const testimonials = [
@@ -44,6 +45,21 @@ const services = [
   { name: 'Bienestar', image: '/assets/poster_bienestar.jpg' },
 ];
 
+const faqs = [
+  {
+    question: "¿A partir de qué edad se recomiendan estos tratamientos?",
+    answer: "La medicina estética moderna se adapta a tus necesidades en cada etapa de la vida. No se trata de una edad específica, sino del momento en que deseas empezar a cuidar tu piel de forma proactiva o corregir algo que te incomoda."
+  },
+  {
+    question: "¿Qué tipos de tratamientos ofrecen?",
+    answer: "Ofrecemos una amplia variedad de tratamientos que incluyen rejuvenecimiento facial, contorno corporal, inyectables como Botox y rellenos, terapia láser y técnicas avanzadas de restauración capilar."
+  },
+  {
+    question: "¿Cómo reservo una cita?",
+    answer: "¡Es fácil! Haz clic en el botón 'Agendar una Consulta' en nuestro sitio web, llámanos directamente o contáctanos por WhatsApp para programar tu cita."
+  }
+];
+
 export default function Inicio() {
   const videoRef = useRef(null);
 
@@ -54,10 +70,11 @@ export default function Inicio() {
   }, []);
 
   useSEO({
-    title: 'Dra. Andrea Diaz - Medicina Estética Avanzada',
-    description: 'Medicina estética avanzada en Bogotá por la Dra. Andrea Diaz. Tratamientos de rejuvenecimiento facial, contorno corporal y más para realzar tu belleza.',
+    title: 'Dra. Andrea Diaz - Medicina Estética Avanzada en Bogotá',
+    description: 'Descubre tratamientos de medicina estética de vanguardia en Bogotá con la Dra. Andrea Diaz. Experta en rejuvenecimiento facial, contorno corporal y más para realzar tu belleza natural.',
     canonical: 'https://andreadiazmd.com/'
   });
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');
 
@@ -70,17 +87,62 @@ export default function Inicio() {
     setIsModalOpen(false);
     setModalImageUrl('');
   };
-  // Seleccionamos los artículos directamente de los datos estáticos
-  const articuloSalud = articles.find(p => p.category === 'Salud');
-  const articuloProducto = articles.find(p => p.category === 'Productos');
-  const featuredArticles = [articuloSalud, articuloProducto].filter(Boolean); // Filtramos por si alguna categoría no tiene artículos
 
   const toSlug = (str) => {
     return str.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
   };
 
+  const medicalBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Dra. Andrea Diaz - Medicina Estética Avanzada",
+    "image": "https://andreadiazmd.com/assets/logo-andrea-512x512.png",
+    "@id": "https://andreadiazmd.com/",
+    "url": "https://andreadiazmd.com/",
+    "telephone": "+573143712078", // ¡¡¡REEMPLAZAR CON EL TELÉFONO REAL!!!
+    "priceRange": "$$ - $$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Cra. 11 #97-23", // ¡¡¡REEMPLAZAR CON LA DIRECCIÓN REAL!!!
+      "addressLocality": "Bogotá",
+      "postalCode": "110221",
+      "addressCountry": "CO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 4.680459774925467,  // ¡¡¡REEMPLAZAR CON LA LATITUD REAL!!!
+      "longitude": -74.04471693085708 // ¡¡¡REEMPLAZAR CON LA LONGITUD REAL!!!
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.instagram.com/dra.andreadm/#" // ¡¡¡REEMPLAZAR CON EL PERFIL REAL!!!
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  const featuredArticles = articles.slice(0, 2);
+
   return (
     <div className="inicio-page-container">
+      <JsonLD data={medicalBusinessSchema} />
+      <JsonLD data={faqSchema} />
       <main className="inicio-main-content">
         <div className="inicio-content-wrapper">
 
@@ -104,7 +166,7 @@ export default function Inicio() {
               <p className="hero-subtitle">
                 La Dra. Andrea Diaz es experta en tratamientos estéticos avanzados diseñados para tus necesidades únicas.
               </p>
-              <a href="servicios">
+              <a href="/servicios">
                 <button className="hero-button">
                   <span className="hero-button-text">Agendar una Consulta</span>
                 </button>
@@ -120,16 +182,7 @@ export default function Inicio() {
             imageSrc="/assets/principal.jpg"
             mainTitle="Conoce a la Dra. Andrea Diaz"
             mainSubtitle="Experta en Medicina Estética Avanzada"
-            descriptionText="Con 10 años de trayectoria desde su graduación en 2015, la Dra. Andrea Diaz es una experta líder que fusiona la ciencia médica con el arte de la estética para lograr resultados reales y naturales. Su pasión no es solo transformar la piel, sino construir la confianza que viene con ella. Antes de dedicarse por completo a la estética, forjó su carácter y precisión en los entornos más exigentes, desde salas de emergencia hasta Unidades de Cuidados Intensivos (UCI), lo que le da una perspectiva única y un compromiso absoluto con la seguridad del paciente.
-
-
-
-Su sólida base como Médica Cirujana, graduada de la prestigiosa Universidad del Zulia y con título convalidado en Colombia , se eleva con una formación de élite: no uno, sino dos Másteres Internacionales en 
-
-
-
-
-Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encuentras a una experta en belleza, sino a una médica integral que pone su vasta experiencia y conocimiento a tu servicio."
+            descriptionText="Con 10 años de trayectoria desde su graduación en 2015, la Dra. Andrea Diaz es una experta líder que fusiona la ciencia médica con el arte de la estética para lograr resultados reales y naturales. Su pasión no es solo transformar la piel, sino construir la confianza que viene con ella. Antes de dedicarse por completo a la estética, forjó su carácter y precisión en los entornos más exigentes, desde salas de emergencia hasta Unidades de Cuidados Intensivos (UCI), lo que le da una perspectiva única y un compromiso absoluto con la seguridad del paciente.\n\nSu sólida base como Médica Cirujana, graduada de la prestigiosa Universidad del Zulia y con título convalidado en Colombia , se eleva con una formación de élite: no uno, sino dos Másteres Internacionales en Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encuentras a una experta en belleza, sino a una médica integral que pone su vasta experiencia y conocimiento a tu servicio."
           />
 
           {/* --- Trusted by Patients Section --- */}
@@ -137,22 +190,10 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
             <h2 className="trusted-patients-title">Confiado por Pacientes</h2>
             <p className="trusted-patients-subtitle">Nos enorgullece la confianza que nuestros pacientes depositan en nosotros.</p>
             <div className="patient-images-grid">
-              {[1, 2, 3, 4].map((i) => {
-                const patientImages = [
-                  '/assets/confiado1.jpg',
-                  '/assets/confiado2.JPG',
-                  '/assets/confiado3jpg.jpg',
-                  '/assets/confiado4.jpg',
-                ];
-                return (
-                  <div key={i} className="patient-image-container">
-                    <div
-                      className="patient-image"
-                      style={{ backgroundImage: `url("${patientImages[i - 1]}")` }}
-                    ></div>
-                  </div>
-                );
-              })}
+              <img src='/assets/confiado1.jpg' alt='Paciente satisfecha con tratamiento facial en Bogotá' className='patient-image' />
+              <img src='/assets/confiado2.JPG' alt='Resultado de tratamiento de rejuvenecimiento facial' className='patient-image' />
+              <img src='/assets/confiado3jpg.jpg' alt='Sonrisa de paciente después de tratamiento estético con la Dra. Andrea Diaz' className='patient-image' />
+              <img src='/assets/confiado4.jpg' alt='Piel radiante de paciente de la Dra. Andrea Diaz en Colombia' className='patient-image' />
             </div>
           </section>
 
@@ -163,7 +204,7 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="testimonial-card">
                   <div className="testimonial-header">
-                    <div className="testimonial-image" style={{ backgroundImage: `url("${testimonial.image}")` }}></div>
+                    <img src={testimonial.image} alt={`Foto de perfil de ${testimonial.name}, paciente de medicina estética`} className="testimonial-image" />
                     <div>
                       <p className="testimonial-name">{testimonial.name}</p>
                       <p className="testimonial-time">{testimonial.time}</p>
@@ -173,11 +214,11 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
                   {testimonial.beforeImage && testimonial.afterImage && (
                     <div className="testimonial-before-after">
                       <div className="before-image-container" onClick={() => openModal(testimonial.beforeImage)}>
-                        <img src={testimonial.beforeImage} alt="Antes" className="before-image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                        <img src={testimonial.beforeImage} alt={`Antes del tratamiento - testimonio de ${testimonial.name}`} className="before-image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                         <span className="image-label">Antes</span>
                       </div>
                       <div className="after-image-container" onClick={() => openModal(testimonial.afterImage)}>
-                        <img src={testimonial.afterImage} alt="Después" className="after-image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                        <img src={testimonial.afterImage} alt={`Después del tratamiento - testimonio de ${testimonial.name}`} className="after-image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                         <span className="image-label">Después</span>
                       </div>
                     </div>
@@ -210,23 +251,10 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
                   Preguntas Frecuentes
                 </h2>
                 <div className="faq-list">
-                  {[
-                    {
-                      question: "¿A partir de qué edad se recomiendan estos tratamientos?",
-                      answer: "Esa es una de las preguntas más inteligentes que puedes hacer, porque la respuesta correcta no es un número mágico, sino un enfoque: la medicina estética moderna se adapta a tus necesidades en cada etapa de la vida. No se trata de una edad específica, sino del momento en que deseas empezar a cuidar tu piel de forma proactiva o corregir algo que te incomoda."
-                    },
-                    {
-                      question: "¿Qué tipos de tratamientos ofrecen?",
-                      answer: "Ofrecemos una amplia variedad de tratamientos que incluyen rejuvenecimiento facial, contorno corporal, diversos tratamientos para la piel, inyectables como Botox y rellenos, terapia láser para diferentes problemas de la piel y técnicas avanzadas de restauración capilar."
-                    },
-                    {
-                      question: "¿Cómo reservo una cita?",
-                      answer: "¡Reservar una cita es fácil! Puedes hacer clic en el botón 'Reservar Cita' en nuestro sitio web para acceder a nuestro formulario de programación en línea. Alternativamente, puedes llamar a nuestra clínica directamente o contactarnos a través de WhatsApp."
-                    }
-                  ].map((faq, index) => (
+                  {faqs.map((faq, index) => (
                     <details key={index} className="faq-item">
                       <summary className="faq-question-summary">
-                        <p className="faq-question-text">{faq.question}</p>
+                        <h3 className="faq-question-text">{faq.question}</h3>
                         <div className="faq-arrow-icon">
                           <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
                         </div>
@@ -244,7 +272,7 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
                 ) : (
                   featuredArticles.map((article) => (
                     <Link to={`/blog/${article.slug}`} key={article.id} className="related-article-card">
-                      <div className="related-article-image" style={{ backgroundImage: `url(${article.imageUrl})` }}></div>
+                      <img src={article.imageUrl} alt={`Artículo del blog: ${article.title}`} className="related-article-image" />
                       <div className="related-article-text-content">
                         <p className="related-article-category">{article.category}</p>
                         <h3 className="related-article-title">{article.title}</h3>
@@ -262,7 +290,7 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
         isOpen={isModalOpen}
         onClose={closeModal}
         imageUrl={modalImageUrl}
-        altText="Vista ampliada"
+        altText="Vista ampliada de la imagen"
       />
     </div>
   );

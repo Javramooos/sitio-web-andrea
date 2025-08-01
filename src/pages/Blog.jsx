@@ -28,8 +28,8 @@ const ARTICLES_PER_PAGE = 3; // Mostrar 3 artículos por página en la sección 
 
 export default function Blog() {
   useSEO({
-    title: 'Blog - Dra. Andrea Diaz',
-    description: 'Artículos sobre medicina estética, cuidado de la piel y bienestar.',
+    title: 'Blog de Medicina Estética y Bienestar - Dra. Andrea Diaz',
+    description: 'Explora artículos sobre los últimos tratamientos de medicina estética, consejos para el cuidado de la piel y bienestar general por la Dra. Andrea Diaz en Bogotá.',
     canonical: 'https://andreadiazmd.com/blog'
   });
   const [searchParams] = useSearchParams();
