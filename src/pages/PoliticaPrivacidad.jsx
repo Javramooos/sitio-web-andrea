@@ -2,8 +2,14 @@
 
 import React from 'react';
 import './LegalPages.css'; // Crearemos este archivo CSS para darle estilo
+import useSEO from '../hooks/useSEO';
 
 export default function PoliticaPrivacidad() {
+  useSEO({
+    title: 'Política de Privacidad - Dra. Andrea Diaz',
+    description: 'Consulta nuestra política de privacidad.',
+    canonical: 'https://andreadiazmd.com/politica-privacidad'
+  });
   return (
     <div className="legal-container bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
       <h1 className="dark:text-white">Política de Privacidad</h1>
@@ -12,8 +18,8 @@ export default function PoliticaPrivacidad() {
       <h2 className="dark:text-white">1. Responsable del Tratamiento de Datos</h2>
       <p className="dark:text-gray-300">
         <strong>Razón Social:</strong> de Andrea <br />
-        <strong>Correo Electrónico:</strong> [Tu Correo Electrónico de Contacto] <br />
-        <strong>Teléfono:</strong> [Tu Número de Teléfono] <br />
+        <strong>Correo Electrónico:</strong> dra.andrea.diazm@gmail.com <br />
+        <strong>Teléfono:</strong> +57 314-371-2078 <br />
         <strong>Ubicación:</strong> Bogotá, Colombia
       </p>
 

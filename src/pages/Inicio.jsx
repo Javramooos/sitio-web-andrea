@@ -56,7 +56,7 @@ export default function Inicio() {
   useSEO({
     title: 'Dra. Andrea Diaz - Medicina Estética Avanzada',
     description: 'Medicina estética avanzada en Bogotá por la Dra. Andrea Diaz. Tratamientos de rejuvenecimiento facial, contorno corporal y más para realzar tu belleza.',
-    canonical: 'https://andreadiaz.com'
+    canonical: 'https://andreadiazmd.com/'
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');

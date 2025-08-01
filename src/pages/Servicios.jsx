@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import useSEO from '../hooks/useSEO';
 
 const serviciosData = [
   { id: 'rejuvenecimiento-facial', icono: '/assets/icon_facial.png', categoria: 'Facial', titulo: 'Rejuvenecimiento Facial', descripcionCorta: 'Tratamientos avanzados para una piel joven y radiante.', videoUrl: 'https://www.youtube.com/embed/l5VF1bZ9_B8', posterUrl: '/assets/poster_facial.jpg', beneficios: ['Reduce líneas finas.', 'Mejora la firmeza.', 'Aporta luminosidad.'], faqs: [{ pregunta: '¿Es doloroso?', respuesta: 'La mayoría de los tratamientos son indoloros o se utiliza anestesia tópica para minimizar cualquier molestia.' }, { pregunta: '¿Cuánto tiempo dura la recuperación?', respuesta: 'La recuperación varía según el tratamiento, pero muchos no requieren tiempo de inactividad.' }, { pregunta: '¿Cuándo veré los resultados?', respuesta: 'Algunos resultados son inmediatos, mientras que otros mejoran progresivamente en las semanas siguientes.' }] },
@@ -38,6 +39,11 @@ function FaqItem({ pregunta, respuesta }) {
 }
 
 export default function Servicios() {
+  useSEO({
+    title: 'Servicios - Dra. Andrea Diaz',
+    description: 'Descubre nuestros tratamientos de medicina estética avanzada.',
+    canonical: 'https://andreadiazmd.com/servicios'
+  });
   const location = useLocation();
   const [filtroActivo, setFiltroActivo] = useState('Todos');
   const [servicioActivo, setServicioActivo] = useState(null);

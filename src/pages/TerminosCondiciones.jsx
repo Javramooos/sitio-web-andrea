@@ -2,8 +2,14 @@
 
 import React from 'react';
 import './LegalPages.css'; // Usará el mismo archivo de estilos
+import useSEO from '../hooks/useSEO';
 
 export default function TerminosCondiciones() {
+  useSEO({
+    title: 'Términos y Condiciones - Dra. Andrea Diaz',
+    description: 'Consulta nuestros términos y condiciones.',
+    canonical: 'https://andreadiazmd.com/terminos-condiciones'
+  });
   return (
     <div className="legal-container bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
       <h1 className="dark:text-white">Términos y Condiciones de Uso</h1>
