@@ -25,7 +25,7 @@ export default function PoliticaPrivacidad() {
 
       <h2 className="dark:text-white">2. Finalidad del Tratamiento de Datos</h2>
       <p className="dark:text-gray-300">
-         Andrea, trataremos los datos personales que nos proporciones con las siguientes finalidades:
+        Trataremos los datos personales que nos proporciones con las siguientes finalidades:
       </p>
       <ul className="dark:text-gray-300">
         <li>Gestionar y agendar las citas solicitadas a través de nuestro formulario de agenda.</li>
