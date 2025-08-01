@@ -17,21 +17,24 @@
 
 .image-modal-content {
   position: relative;
-  max-width: 70vw; /* Ajustado al 70% del ancho del viewport */
-  max-height: 70vh; /* Ajustado al 70% de la altura del viewport */
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto; /* Permitir el desplazamiento si la imagen es grande */
   transform: scale(0.95);
   animation: scaleIn 0.3s forwards;
+  border-radius: 8px; /* Para que el borde redondeado se aplique al contenedor */
 }
 
 .image-modal-close-button {
-  position: absolute;
-  top: -1.5rem;
-  right: -1.5rem;
+  position: sticky; /* Se mantiene fijo durante el scroll */
+  top: 1rem;
+  right: 1rem;
+  float: right; /* Lo alinea a la derecha */
   background: white;
   border: none;
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   font-size: 1.5rem;
   color: #333;
   cursor: pointer;
@@ -39,12 +42,16 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Asegura que esté por encima de la imagen */
+  margin: 0 0 1rem 1rem; /* Espacio para que no se pegue al contenido */
 }
 
 .image-modal-image {
   display: block;
-  max-width: 100%;
-  max-height: 100%; /* Asegura que la imagen se ajuste al 70% del modal */
+  width: auto;
+  height: auto;
+  max-width: none; /* Permite que la imagen sea más ancha que el contenedor */
+  max-height: none; /* Permite que la imagen sea más alta que el contenedor */
   border-radius: 8px;
 }
 
@@ -59,15 +66,11 @@
 
 /* Responsividad */
 @media (max-width: 768px) {
-  .image-modal-content {
-    max-width: 90vw; /* Ajuste para móviles */
-    max-height: 90vh; /* Ajuste para móviles */
-  }
   .image-modal-close-button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
     top: 0.5rem;
     right: 0.5rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.2rem;
   }
 }

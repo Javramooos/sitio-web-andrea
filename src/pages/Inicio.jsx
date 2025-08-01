@@ -30,8 +30,8 @@ const testimonials = [
     time: 'Hace 5 meses',
     image: '/assets/testi3.JPG',
     text: "La doctora Andrea es una profesional integral, empática y con un alto grado de profesionalismo en todo lo que hace.",
-    beforeImage: '/assets/1.jpg',
-    afterImage: '/assets/3.jpg',
+    beforeImage: '/assets/5.jpg',
+    afterImage: '/assets/6.jpg',
   },
 ];
 
@@ -173,11 +173,11 @@ Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encue
                   {testimonial.beforeImage && testimonial.afterImage && (
                     <div className="testimonial-before-after">
                       <div className="before-image-container" onClick={() => openModal(testimonial.beforeImage)}>
-                        <img src={testimonial.beforeImage} alt="Antes" className="before-image" />
+                        <img src={testimonial.beforeImage} alt="Antes" className="before-image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                         <span className="image-label">Antes</span>
                       </div>
                       <div className="after-image-container" onClick={() => openModal(testimonial.afterImage)}>
-                        <img src={testimonial.afterImage} alt="Después" className="after-image" />
+                        <img src={testimonial.afterImage} alt="Después" className="after-image" style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                         <span className="image-label">Después</span>
                       </div>
                     </div>
