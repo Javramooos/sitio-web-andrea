@@ -84,6 +84,9 @@ export default function Servicios() {
       <div className="servicios-titulo-container">
         <h1>Nuestros Servicios</h1>
         <p>Explora nuestra gama de tratamientos estéticos avanzados, diseñados para realzar tu belleza natural y bienestar.</p>
+        <p style={{ color: 'red', marginTop: '1rem' }}>
+      Esta página está en construcción. La información y diseño pueden cambiar.
+    </p>
       </div>
 
       <div className="filtros-container">
