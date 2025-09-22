@@ -7,6 +7,7 @@ import { articles } from '../articuloData'; // Importamos los datos del blog
 import ImageModal from '../components/ImageModal';
 import useSEO from '../hooks/useSEO';
 import JsonLD from '../components/JsonLD'; // Importamos el componente JsonLD
+import SubscriptionForm from '../components/SubscriptionForm'; // Importamos el formulario de suscripción
 
 // --- Datos para las secciones ---
 const testimonials = [
@@ -184,6 +185,9 @@ export default function Inicio() {
             mainSubtitle="Experta en Medicina Estética Avanzada"
             descriptionText="Con 10 años de trayectoria desde su graduación en 2015, la Dra. Andrea Diaz es una experta líder que fusiona la ciencia médica con el arte de la estética para lograr resultados reales y naturales. Su pasión no es solo transformar la piel, sino construir la confianza que viene con ella. Antes de dedicarse por completo a la estética, forjó su carácter y precisión en los entornos más exigentes, desde salas de emergencia hasta Unidades de Cuidados Intensivos (UCI), lo que le da una perspectiva única y un compromiso absoluto con la seguridad del paciente.Su sólida base como Médica Cirujana, graduada de la prestigiosa Universidad del Zulia y con título convalidado en Colombia , se eleva con una formación de élite: no uno, sino dos Másteres Internacionales en Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encuentras a una experta en belleza, sino a una médica integral que pone su vasta experiencia y conocimiento a tu servicio."
           />
+
+          {/* --- Subscription Form Section --- */}
+          <SubscriptionForm />
 
           {/* --- Trusted by Patients Section --- */}
           <section className="trusted-patients-section">
