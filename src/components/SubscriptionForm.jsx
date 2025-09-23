@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styles from './SubscriptionForm.module.css';
+import countryCodes from '../data/countryCodes.json';
 
 const SubscriptionForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [countryCode, setCountryCode] = useState('+57');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -18,13 +20,15 @@ const SubscriptionForm = () => {
       return;
     }
 
+    const fullPhone = phone ? `${countryCode}${phone}` : null;
+
     try {
       const response = await fetch('http://localhost:3001/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, phone }),
+        body: JSON.stringify({ name, email, phone: fullPhone }),
       });
 
       const data = await response.json();
@@ -47,15 +51,15 @@ const SubscriptionForm = () => {
     <div className={styles.leadSection}>
       <div className={styles.mockup}>
         <div className={styles.mockupPlaceholder}>
-            <img src="/assets/logo-andrea-512x512.png" alt="Guía Gratuita" />
-            <span>Guía para una Piel Radiante</span>
+            <img src="/assets/GUIA.jpg" alt="Guía para una piel radiante" />
         </div>
+        <h4 className={styles.mockupTitle}>Guía para una Piel Radiante</h4>
       </div>
       <div className={styles.subscriptionForm}>
         <h3 className={styles.title}>Recibe nuestra guía gratuita</h3>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputGroup}>
-            <label htmlFor="name" className={styles.label}>Nombre:</label>
+            <label htmlFor="name" className={styles.label}>Nombre Completo:</label>
             <input
               type="text"
               id="name"
@@ -65,6 +69,7 @@ const SubscriptionForm = () => {
               required
             />
           </div>
+
           <div className={styles.inputGroup}>
             <label htmlFor="email" className={styles.label}>Email:</label>
             <input
@@ -76,16 +81,23 @@ const SubscriptionForm = () => {
               required
             />
           </div>
+
           <div className={styles.inputGroup}>
             <label htmlFor="phone" className={styles.label}>Teléfono (Opcional):</label>
-            <input
-              type="tel"
-              id="phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className={styles.input}
-            />
+            <div className={styles.phoneGroup}>
+              <select value={countryCode} onChange={(e) => setCountryCode(e.target.value)} className={styles.input}>
+                {countryCodes.map(c => <option key={c.code} value={c.code.split(',')[0]}>{c.name} ({c.code})</option>)}
+              </select>
+              <input
+                type="tel"
+                id="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className={`${styles.input} ${styles.phoneInput}`}
+              />
+            </div>
           </div>
+
           <button type="submit" className={styles.button}>
             Suscribirme
           </button>

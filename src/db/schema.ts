@@ -6,6 +6,7 @@ export const prospects = pgTable('prospects', {
   name: text('name').notNull(),
   email: varchar('email', { length: 256 }).notNull().unique(),
   phone: varchar('phone', { length: 50 }),
+  communicationPreference: varchar('communication_preference', { length: 50 }).default('email').notNull(), // 'email' or 'whatsapp'
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
