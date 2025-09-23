@@ -85,7 +85,7 @@ const SubscriptionForm = () => {
           <div className={styles.inputGroup}>
             <label htmlFor="phone" className={styles.label}>Teléfono (Opcional):</label>
             <div className={styles.phoneGroup}>
-              <select value={countryCode} onChange={(e) => setCountryCode(e.target.value)} className={styles.input}>
+              <select value={countryCode} onChange={(e) => setCountryCode(e.target.value)} className={`${styles.input} ${styles.countryCodeSelect}`}>
                 {countryCodes.map(c => <option key={c.code} value={c.code.split(',')[0]}>{c.name} ({c.code})</option>)}
               </select>
               <input
