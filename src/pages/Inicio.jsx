@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useRef, useEffect } from 'react';
 import './Inicio.css';
-import DrDiazSection from '../components/DrDiazSection';
-import InfoSection from '../components/InfoSection';
+import DrDiazSection from './DrDiazSection';
 import { articles } from '../articuloData'; // Importamos los datos del blog
 import ImageModal from '../components/ImageModal';
 import useSEO from '../hooks/useSEO';
-import JsonLD from '../components/JsonLD'; // Importamos el componente JsonLD
+import JsonLD from './JsonLD'; // Importamos el componente JsonLD
 import SubscriptionForm from '../components/SubscriptionForm'; // Importamos el formulario de suscripción
 
 // --- Datos para las secciones ---
@@ -138,10 +137,10 @@ export default function Inicio() {
     }))
   };
 
-  const featuredArticles = articles.slice(0, 2);
+  const featuredArticles = articles.slice(0, 3);
 
   return (
-    <div className="inicio-page-container">
+    <div className="inicio-page-container fade-in">
       <JsonLD data={medicalBusinessSchema} />
       <JsonLD data={faqSchema} />
       <main className="inicio-main-content">
@@ -162,32 +161,60 @@ export default function Inicio() {
             <div className="hero-overlay" />
             <div className="hero-content">
               <h1 className="hero-title">
-                Medicina Estética Avanzada para tu Belleza Natural
+                Medicina Estética Avanzada en Bogotá para tu Belleza Natural
               </h1>
               <p className="hero-subtitle">
                 La Dra. Andrea Diaz es experta en tratamientos estéticos avanzados diseñados para tus necesidades únicas.
               </p>
-              <a href="/servicios">
-                <button className="hero-button">
-                  <span className="hero-button-text">Agendar una Consulta</span>
-                </button>
+              <a href="/servicios" className="hero-button">
+                <span className="hero-button-text">Agendar una Consulta</span>
               </a>
             </div>
           </div>
 
-          {/* --- New Info Section --- */}
-          <InfoSection />
+          {/* --- Why Choose Us Section --- */}
+          <section className="why-choose-us-section">
+            <h2>
+              ¿Por qué elegirnos?
+            </h2>
+            <div className="why-choose-us-grid">
+              {/* Item 1 */}
+              <div className="why-choose-us-card">
+                <div className="why-choose-us-icon">
+                  <i className="fas fa-user-md"></i>
+                </div>
+                <h3>Experiencia Médica</h3>
+                <p>Más de 10 años de trayectoria profesional garantizan tratamientos seguros y efectivos en manos expertas.</p>
+              </div>
+              {/* Item 2 */}
+              <div className="why-choose-us-card">
+                <div className="why-choose-us-icon">
+                  <i className="fas fa-star"></i>
+                </div>
+                <h3>Resultados Naturales</h3>
+                <p>Nuestro enfoque se centra en armonizar tus rasgos y realzar tu belleza natural sin perder tu esencia.</p>
+              </div>
+              {/* Item 3 */}
+              <div className="why-choose-us-card">
+                <div className="why-choose-us-icon">
+                  <i className="fas fa-heart"></i>
+                </div>
+                <h3>Atención Personalizada</h3>
+                <p>Cada paciente es único. Diseñamos planes de tratamiento a medida para cumplir tus objetivos específicos.</p>
+              </div>
+            </div>
+          </section>
 
           {/* --- Meet Dr. Andrea Diaz Section --- */}
           <DrDiazSection
             imageSrc="/assets/principal.jpg"
             mainTitle="Conoce a la Dra. Andrea Diaz"
             mainSubtitle="Experta en Medicina Estética Avanzada"
-            descriptionText="Con 10 años de trayectoria desde su graduación en 2015, la Dra. Andrea Diaz es una experta líder que fusiona la ciencia médica con el arte de la estética para lograr resultados reales y naturales. Su pasión no es solo transformar la piel, sino construir la confianza que viene con ella. Antes de dedicarse por completo a la estética, forjó su carácter y precisión en los entornos más exigentes, desde salas de emergencia hasta Unidades de Cuidados Intensivos (UCI), lo que le da una perspectiva única y un compromiso absoluto con la seguridad del paciente.Su sólida base como Médica Cirujana, graduada de la prestigiosa Universidad del Zulia y con título convalidado en Colombia , se eleva con una formación de élite: no uno, sino dos Másteres Internacionales en Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encuentras a una experta en belleza, sino a una médica integral que pone su vasta experiencia y conocimiento a tu servicio."
+            descriptionText="Con 10 años de trayectoria desde su graduación en 2015, la Dra. Andrea Diaz es una experta líder en Bogotá que fusiona la ciencia médica con el arte de la estética para lograr resultados reales y naturales. Su pasión no es solo transformar la piel, sino construir la confianza que viene con ella. Antes de dedicarse por completo a la estética, forjó su carácter y precisión en los entornos más exigentes, desde salas de emergencia hasta Unidades de Cuidados Intensivos (UCI), lo que le da una perspectiva única y un compromiso absoluto con la seguridad del paciente. Su sólida base como Médica Cirujana, graduada de la prestigiosa Universidad del Zulia y con título convalidado en Colombia, se eleva con una formación de élite: dos Másteres Internacionales en Medicina Estética y en Tratamientos Faciales. Con la Dra. Andrea, no solo encuentras a una experta en belleza, sino a una médica integral que pone su vasta experiencia y conocimiento a tu servicio en el corazón de Bogotá."
           />
 
           {/* --- Subscription Form Section --- */}
-          <SubscriptionForm />
+          {/* <SubscriptionForm /> */}
 
           {/* --- Trusted by Patients Section --- */}
           <section className="trusted-patients-section">

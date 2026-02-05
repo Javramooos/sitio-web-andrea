@@ -9,7 +9,7 @@
 
 /* --- Slider de Artículos Destacados --- */
 .featured-articles-swiper {
-  width: 100%; height: 450px;
+  width: 100%; height: 500px;
   border-radius: 16px; margin-bottom: 3rem;
 }
 .articulo-destacado-slide {
@@ -62,55 +62,70 @@
 .blog-content-wrapper { display: grid; grid-template-columns: 2.5fr 1fr; gap: 3rem; }
 .blog-main-content h3 { font-size: 2rem; margin-top: 0; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
 
-/* === ESTILOS MEJORADOS PARA LAS TARJETAS DE ARTÍCULO === */
+/* === ESTILOS MEJORADOS PARA LAS TARJETAS DE ARTÍCULO (GRID LAYOUT) === */
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
 .articulo-card {
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column; /* Cambiado a columna para layout de tarjeta vertical */
   text-decoration: none;
   color: var(--texto);
-  margin-top: 2.5rem;
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 0; /* El padding se manejará en los elementos internos */
 }
+
 .articulo-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
+
 .articulo-card .card-imagen {
-  width: 280px;
-  flex-shrink: 0;
-  border-radius: 0;
+  width: 100%;
+  height: 200px; /* Altura fija para consistencia */
   overflow: hidden;
 }
+
 .articulo-card .card-imagen img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
-.articulo-card:hover .card-imagen img { transform: scale(1.05); }
+
+.articulo-card:hover .card-imagen img {
+  transform: scale(1.05);
+}
 
 .card-texto {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  flex-grow: 1; /* Asegura que esta sección ocupe el espacio disponible */
 }
 
 .card-texto h4 {
-  font-size: 1.4rem;
+  font-size: 1.3rem; /* Título un poco más pequeño para el formato de tarjeta */
   margin: 0.5rem 0 0.8rem;
   font-weight: 700;
+  line-height: 1.3;
 }
+
 .card-texto p {
-  font-size: 1rem;
+  font-size: 0.95rem; /* Resumen un poco más pequeño */
   color: var(--texto-secundario);
   line-height: 1.6;
-  flex-grow: 1;
+  flex-grow: 1; /* Empuja el 'Leer más' hacia abajo */
 }
+
 .leer-mas {
   margin-top: 1rem;
   color: var(--principal);
@@ -120,7 +135,10 @@
   gap: 0.5rem;
   transition: color 0.3s ease;
 }
-.leer-mas:hover { color: var(--principal-hover); }
+
+.leer-mas:hover {
+  color: var(--principal-hover);
+}
 
 /* --- Barra Lateral y Categorías --- */
 .blog-sidebar { position: sticky; top: 120px; height: fit-content; }
@@ -132,6 +150,43 @@
   margin-bottom: 1.5rem;
   display: inline-block;
 }
+
+/* --- Redes Sociales Sidebar --- */
+.sidebar-section {
+  margin-bottom: 2rem;
+}
+
+.sidebar-social-icons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  color: #555;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.social-icon.instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.social-icon.facebook:hover { background-color: #1877F2; }
+.social-icon.x-twitter:hover { background-color: #000000; }
+.social-icon.tiktok:hover { background-color: #000000; }
+.social-icon.whatsapp:hover { background-color: #25D366; }
 
 /* === ESTILOS MEJORADOS PARA CATEGORÍAS (VERTICAL POR DEFECTO) === */
 .blog-sidebar ul {
@@ -221,6 +276,7 @@
 /* --- Responsividad para el Blog --- */
 @media (max-width: 900px) {
   .blog-content-wrapper { grid-template-columns: 1fr; }
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
   .blog-sidebar { position: static; margin-top: 3rem; }
 
   .blog-sidebar ul {
@@ -233,18 +289,12 @@
 @media (max-width: 768px) {
   .destacado-overlay h2 { font-size: 2rem; }
   .destacado-overlay p { font-size: 1rem; }
-  .articulo-card {
-    flex-direction: column;
-  }
-  .articulo-card .card-imagen {
-    width: 100%;
-    height: 220px; /* Altura fija para la imagen en móvil */
-  }
 }
 
 @media (max-width: 600px) {
+  .articles-grid { grid-template-columns: 1fr; }
   .blog-page-container { margin: 1rem auto 4rem; }
-  .featured-articles-swiper { height: 380px; margin-bottom: 2rem; }
+  .featured-articles-swiper { height: 350px; margin-bottom: 2rem; }
   .destacado-overlay { padding: 1.5rem; }
   .destacado-overlay h2 { font-size: 1.8rem; }
   .blog-main-content h3 { font-size: 1.8rem; }

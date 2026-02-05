@@ -132,6 +132,62 @@
   }
 }
 
+/* --- Why Choose Us Section --- */
+.why-choose-us-section {
+  padding: 4rem 2rem;
+  background-color: #fdf9fa;
+  text-align: center;
+}
+
+.why-choose-us-section h2 {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.why-choose-us-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.why-choose-us-card {
+  flex: 1 1 300px;
+  max-width: 350px;
+  padding: 2.5rem 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid #D9AAB7; /* Rosa Principal */
+}
+
+.why-choose-us-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.why-choose-us-icon {
+  font-size: 2.5rem;
+  color: #D9AAB7; /* Rosa Principal */
+  margin-bottom: 1.5rem;
+}
+
+.why-choose-us-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-family: 'Playfair Display', serif;
+}
+
+.why-choose-us-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
 /* Trusted by Patients Section */
 .trusted-patients-section {
   padding-top: 4rem; /* py-16 */
@@ -555,4 +611,14 @@
   font-size: 1rem; /* Smaller title font size */
   line-height: 1.2; /* Adjusted line height */
   color: var(--text-primary);
+}
+
+/* Animación de entrada (Fade In) */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

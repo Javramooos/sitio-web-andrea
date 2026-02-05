@@ -3,6 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { articles } from '../articuloData';
 import './Blog.css';
 import useSEO from '../hooks/useSEO';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faWhatsapp, faTiktok } from '@fortawesome/free-brands-svg-icons';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -102,11 +104,13 @@ export default function Blog() {
       <div className="blog-content-wrapper">
         <main className="blog-main-content">
           <h3>{selectedCategory && selectedCategory !== 'Todos' ? `Publicaciones sobre ${selectedCategory}` : 'Todas las Publicaciones'}</h3>
-          {articlesToDisplay.length > 0 ? (
-            articlesToDisplay.map(article => <ArticleCard key={article.id} article={article} />)
-          ) : (
-            <p>No hay publicaciones en esta categoría.</p>
-          )}
+          <div className="articles-grid">
+            {articlesToDisplay.length > 0 ? (
+              articlesToDisplay.map(article => <ArticleCard key={article.id} article={article} />)
+            ) : (
+              <p>No hay publicaciones en esta categoría.</p>
+            )}
+          </div>
 
           {totalPages > 1 && (
             <div className="pagination-container">
@@ -144,6 +148,23 @@ export default function Blog() {
         </main>
 
         <aside className="blog-sidebar">
+          <div className="sidebar-section social-section">
+            <h4>Síguenos</h4>
+            <div className="sidebar-social-icons">
+              <a href="https://www.instagram.com/dra.andreadm/" target="_blank" rel="noopener noreferrer" className="social-icon instagram" aria-label="Instagram">
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+              <a href="https://www.facebook.com/share/176LjUnJeu/" target="_blank" rel="noopener noreferrer" className="social-icon facebook" aria-label="Facebook">
+                <FontAwesomeIcon icon={faFacebook} />
+              </a>
+              <a href="https://www.tiktok.com/@dra.andreadiaz" target="_blank" rel="noopener noreferrer" className="social-icon tiktok" aria-label="TikTok">
+                <FontAwesomeIcon icon={faTiktok} />
+              </a>
+              <a href="https://wa.me/573143712078" target="_blank" rel="noopener noreferrer" className="social-icon whatsapp" aria-label="WhatsApp">
+                <FontAwesomeIcon icon={faWhatsapp} />
+              </a>
+            </div>
+          </div>
           <h4>Categorías</h4>
           <ul>
             {allCategories.map(category => (

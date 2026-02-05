@@ -7,11 +7,15 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
+import { CartProvider } from './context/CartContext.jsx';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
-    <Analytics />
-    <SpeedInsights />
+    <CartProvider>
+      <App />
+      <Analytics />
+      <SpeedInsights />
+    </CartProvider>
   </BrowserRouter>
 );
 

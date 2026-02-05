@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook, faWhatsapp, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faFacebook, faWhatsapp, faTiktok, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 // --- CAMBIOS AQUÍ ---
 // 1. Importamos los íconos que necesitamos: teléfono y un ícono genérico para los links.
 import { faMapMarkerAlt, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -45,6 +45,9 @@ export default function Footer() {
         </a>
         <a href="https://www.tiktok.com/@dra.andreadiaz" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
           <FontAwesomeIcon icon={faTiktok} />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <FontAwesomeIcon icon={faXTwitter} />
         </a>
       </div>
 

@@ -6,6 +6,8 @@ import Inicio from './pages/Inicio';
 import Agenda from './pages/Agenda';
 import Blog from './pages/Blog';
 import Servicios from './pages/Servicios';
+import Checkout from './pages/Checkout';
+import PagoExitoso from './pages/PagoExitoso';
 import PoliticaPrivacidad from './pages/PoliticaPrivacidad';
 import TerminosCondiciones from './pages/TerminosCondiciones';
 import ArticuloDetalle from './pages/ArticuloDetalle';
@@ -26,6 +28,8 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<ArticuloDetalle />} />
           <Route path="/servicios" element={<Servicios />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/pago-exitoso" element={<PagoExitoso />} />
           <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
           <Route path="/terminos-condiciones" element={<TerminosCondiciones />} />
         </Routes>
