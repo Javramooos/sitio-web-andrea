@@ -211,10 +211,69 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
+/* --- Estilos para Tablas en el Blog (RESPONSIVO) --- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+  margin: 2rem 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
+  background-color: #fff;
+}
+
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Asegura que la tabla mantenga su estructura y active el scroll en móviles */
+  font-size: 0.95rem;
+}
+
+.blog-table thead tr {
+  background-color: var(--rosa-principal);
+  color: #ffffff;
+  text-align: left;
+}
+
+.blog-table th,
+.blog-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.blog-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.blog-table tbody tr:nth-of-type(even) {
+  background-color: #fdf9fa; /* Color de fondo alterno muy suave */
+}
+
+.blog-table tbody tr:hover {
+  background-color: #fceef3;
+}
+
 /* --- Responsividad --- */
 @media (max-width: 768px) {
-  .detalle-header h1 { font-size: 2.5rem; }
-  .detalle-container { padding: 0 1.5rem; margin: 1rem auto 4rem; }
+  .detalle-header h1 { font-size: 2.2rem; }
+  .detalle-container { padding: 0 1.2rem; margin: 1rem auto 4rem; }
+  
+  .detalle-contenido {
+    font-size: 1.05rem; /* Ajuste para lectura cómoda en móvil */
+    line-height: 1.7;
+  }
+
+  .detalle-contenido h2 { font-size: 1.7rem; }
+  .detalle-contenido h3 { font-size: 1.4rem; }
+
+  /* Ajuste para la caja de autor en móvil */
+  .author-bio-box { 
+    flex-direction: column; 
+    text-align: center; 
+    padding: 1.5rem;
+  }
 }
 
 /* Animación de entrada */
@@ -469,9 +528,3 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-
-/* Responsividad para elementos nuevos */
-@media (max-width: 768px) {
-  .author-bio-box { flex-direction: column; text-align: center; }
-}
-  
