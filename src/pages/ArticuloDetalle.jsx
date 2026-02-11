@@ -194,7 +194,9 @@ export default function ArticuloDetalle() {
 
       {/* Imagen promocional pie de artículo (Footer interno del blog) */}
       <div className="article-footer-image-container">
-        <img src="/assets/ANDREAFOOTER.png" alt="Promoción exclusiva Dra. Andrea Diaz" className="article-footer-image" />
+        <Link to="/servicios">
+          <img src="/assets/ANDREAFOOTER.png" alt="Promoción exclusiva Dra. Andrea Diaz" className="article-footer-image" />
+        </Link>
       </div>
 
       {/* Caja de Autor (E-E-A-T) */}
